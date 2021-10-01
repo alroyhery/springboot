@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link th:href="@{/css/style.css}" rel="stylesheet" />
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        <title>Inventory Page</title>
+    </head>
+    <body>
+
+        <header th:fragment="navbar">
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#" style="justify-content: center"></a>
+                <!-- Navbar brand yo -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTop">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about"></a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container mt-5" th:fragment="head-content">
+            <h1 class="mt-5 " style="justify-content: center">List Item Stored</h1>
+            
+        </div>
+
+        <footer th:fragment="footer" class="footer ">
+            <div class="container ">
+                <span class="text-muted ">Place sticky footer content here.</span>
+            </div>
+        </footer>
+
+
+        <div th:fragment="scripts">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        </div>
+    </body>
+</html>
+
