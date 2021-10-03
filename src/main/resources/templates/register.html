@@ -5,11 +5,10 @@
         <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
-            <div th:replace="includes/base :: head-content"></div>
             <div class="container mt-5">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <h5 class="mb-4">Halaman Pendaftaran</h5>
+                        <h5 class="mb-4">Register</h5>
 
                         <form method="POST" action="#" th:action="@{/register}" th:object="${user}">
                             <div class="form-group">

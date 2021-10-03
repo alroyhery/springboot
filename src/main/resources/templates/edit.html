@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="includes/base :: css"></head>
+    <body>
+        <header th:replace="includes/base :: navbar"></header>
+
+        <main role="main " class="container">
+            <div class="container mt-5">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="mb-4">Judul Halaman</h5>
+
+                        <form method="POST" action="#" th:action="@{/thread/store}" th:object="${thread}">
+                            <input type="hidden" th:field="*{id}" />
+                            <div class="form-group">
+                                <label for="example-inventory-name">Tuliskan Nama Barang</label>
+                                <input th:field="*{title}" type="text" class="form-control" id="example-inventory-name" aria-describedby="emailHelp" placeholder="Masukkan Nama Barang" required>
+                                <small id="emailHelp" class="form-text text-muted">Nama Barang harus lebih dari 5 karakter</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="example-inventory-desc">Jelaskan deskripsi Barang</label>
+                                <textarea th:field="*{content}" rows="3" class="form-control" id="example-inventory-desc" aria-describedby="emailHelp" placeholder="Deskripsi Barang"></textarea>
+                                <small id="emailHelp" class="form-text text-muted">Kamu dapat menuliskan deskripsi Barang pada kolom ini.</small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+
+        <div th:replace="includes/base  :: footer"></div>
+
+        <div th:replace="includes/base  :: scripts"></div>
+    </body>
+</html>

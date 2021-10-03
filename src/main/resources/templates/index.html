@@ -5,12 +5,13 @@
         <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
-            <div th:replace="includes/base :: head-content"></div>
+            
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
                         <h1>Hello, <span th:text="${session.name}"></span>!</h1>
                         <table class="table table-hover">
+<<<<<<< Updated upstream
                             <tr>
                                 <th>Title</th>
                                 <th>Description</th>
@@ -19,6 +20,12 @@
                             <tr th:each="todo : ${list}">
                                 <td th:text="${ todo.title }"></td>
                                 <td th:text="${ todo.description }"></td>
+=======
+                            <tr th:each="thread : ${list}">
+                                <td th:text="${ thread.title }"></td>
+                                <td th:text="${ thread.content }"></td>
+                                
+>>>>>>> Stashed changes
                                 <td>
                                     <div class="btn-group " role="group " aria-label="Basic example ">
                                         <a th:href="@{/todo/{id}/edit(id=${ todo.id })}"  class="btn btn-info text-white ">
@@ -34,6 +41,17 @@
                     </div>
                 </div>
             </div>
+            
+            <div th:each="thread : ${list}">
+                
+                <form>
+                    <h2> <span th:text="${ thread.title }"></span> </h2>
+                    <p> <span th:text="${ thread.content }"></span> </p>
+                </form>
+
+                
+            </div>
+            
         </main>
 
 

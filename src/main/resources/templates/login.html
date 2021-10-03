@@ -5,11 +5,10 @@
         <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
-            <div th:replace="includes/base :: head-content"></div>
             <div class="container mt-5">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <h5 class="mb-4">Halaman Login</h5>
+                        <h5 class="mb-4">Login</h5>
                         <div class="alert alert-danger" th:if="${error}">
                             <span th:text="${error}"></span>
                         </div>
