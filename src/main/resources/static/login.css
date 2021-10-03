@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #ffce3a, #94c1fa);
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.kotak_login {
+    width: 350px;
+    background-color: white;
+    margin: 80px auto;
+    padding: 30px 20px;
+    opacity: 0.9;
+    box-shadow: 0px 0px 20px 6px;
+    border-radius: 10px;
+}
+
+label {
+    font-size: 20pt;
+}
+
+.form_login {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: 11pt;
+    margin-bottom: 20px;
+}
+
+.form_login:hover {
+    background-color: lightgrey;
+    outline-style: none;
+}
+
+.form_login:focus {
+    background-color: lightgrey;
+}
+
+.tombol_login {
+    background-color: #ffce3a;
+    color: white;
+    font-size: 11pt;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+
+
+}
+
+.tombol_login:hover {
+    background-color: darkorange;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    letter-spacing: 3px;
+    font-size: 10pt;
+}
+
+a:hover {
+    color: darkorange;
+    text-decoration: underline;
+}
