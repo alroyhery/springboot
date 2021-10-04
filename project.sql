@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2021 at 03:09 PM
+-- Generation Time: Oct 04, 2021 at 03:30 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -76,7 +76,8 @@ CREATE TABLE `thread` (
   `id` int(11) NOT NULL,
   `title` varchar(230) NOT NULL,
   `content` text NOT NULL,
-  `id_category` int(11) NOT NULL,
+  `category` text NOT NULL,
+  `id_category` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -85,8 +86,9 @@ CREATE TABLE `thread` (
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`id`, `title`, `content`, `id_category`, `id_user`, `created_at`) VALUES
-(1, 'asdadasd', 'adsadadsas', 0, 1, '2021-10-02 23:46:01');
+INSERT INTO `thread` (`id`, `title`, `content`, `category`, `id_category`, `id_user`, `created_at`) VALUES
+(1, 'asdadasd', 'adsadadsas', '', 0, 1, '2021-10-02 23:46:01'),
+(2, 'asdasdasda', 'ghgh', 'hentai', NULL, NULL, '2021-10-04 20:16:48');
 
 -- --------------------------------------------------------
 
@@ -173,7 +175,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
