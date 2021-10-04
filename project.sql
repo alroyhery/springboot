@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2021 at 03:30 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Oct 04, 2021 at 06:04 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,8 +87,10 @@ CREATE TABLE `thread` (
 --
 
 INSERT INTO `thread` (`id`, `title`, `content`, `category`, `id_category`, `id_user`, `created_at`) VALUES
-(1, 'asdadasd', 'adsadadsas', '', 0, 1, '2021-10-02 23:46:01'),
-(2, 'asdasdasda', 'ghgh', 'hentai', NULL, NULL, '2021-10-04 20:16:48');
+(1, 'CERITAKU DI RUMAH', 'Malam itu aku mlihat aloroy sedang di kamar dan aksdjasdkjaskdjaskdjaskdjaksdjkasjdkjasdkjasdkjaskjd kemudian dia asdaskdjaskdjkasdkjaskjd lalu dia askjdkasjdkasdjasjdkjaskdaskdjaksdasdasd', 'horror', 0, 1, '2021-10-02 23:46:01'),
+(2, 'AKU ADA IDE', 'Ada beberapa jenis media sosial yang populer dan banyak digunakan semua kalangan, seperti Instagram, Facebook, Twitter, hingga Whatsapp.\r\nKamu juga dapat mem-posting foto atau video ke media sosial. Saat mengunggahnya, kamu biasanya membutuhkan kata-kata yang dijadikan sebagai caption.\r\nKata-kata tersebut berguna untuk membuat postingan yang kamu buat menjadi lebih keren dan menarik sehingga banyak orang yang tertarik dengan postinganmu.\r\nHal tersebut dibutuhkan karena pada era modern saat ini banyak orang yang membutuhkan eksistensi untuk kehidupan bersosial.\r\nNamun, tidak semua orang dapat merangkai kata-kata keren untuk dijadikan sebagai caption di berbagai media sosial yang mereka miliki.', 'EDUKATIF', NULL, NULL, '2021-10-04 20:16:48'),
+(3, 'ERLANGGA', 'AKU PUNYA TEMAN NAMANYA ERLANGGA DIA SELALU ASDKASJDKASDKASJDKASJDKASDJ KEMUDIAN ASKDASKDJASKDJASKJDKASD LALU ASKDAKSDJAKSJDKASKDJAS DAN AKSDJASKDJASKJDKASJDKDASJ SAAT ASKDNASKDAKSDNASDNASDASD', 'psychology horror', NULL, NULL, '2021-10-04 21:27:48'),
+(5, 'asdlasdasdkasdkk', 'asdasdasdasdasdaasdasdasdad askdjaskdjaskdkaskdjaskj aksj askdjaksjdaskjdkj akjd kasjd kasjdaksdjasldjasldjalsj lj alskjdaskljdlaskjdlas kasdjkjkjk askdjaksdjakj kj aksjdaksjdkja skdjka d', 'Comedy', NULL, NULL, '2021-10-04 21:39:24');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `created_at`) VALUES
-(1, 'qwerty', '123@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2021-10-02 23:13:55');
+(1, 'qwerty', '123@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2021-10-02 23:13:55'),
+(2, 'adly', 'adly@a.com', '202cb962ac59075b964b07152d234b70', '2021-10-04 20:57:50');
 
 --
 -- Indexes for dumped tables
@@ -175,13 +178,13 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
