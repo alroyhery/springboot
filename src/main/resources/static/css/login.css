@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(120deg, #ffce3a, #94c1fa);
+    background: linear-gradient(120deg, #4F7CAC, #C0E0DE);
     height: 100vh;
     overflow: hidden;
 }
@@ -53,7 +53,7 @@ label {
 }
 
 .tombol_login {
-    background-color: #ffce3a;
+    background-color: #4F7CAC;
     color: white;
     font-size: 11pt;
     width: 48%;
@@ -65,7 +65,7 @@ label {
 }
 
 .tombol_login:hover {
-    background-color: darkorange;
+    background-color: #C0E0DE;
 }
 
 a {
