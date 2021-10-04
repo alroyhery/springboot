@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="includes/base :: css"></head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link th:href="@{/css/index.css}" rel="stylesheet" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Homepage</title>
+    </head>
     <body>
-        <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
                         <h1>Hello, <span th:text="${session.name}"></span>!</h1>
-                        <table class="table table-hover">
-                            <tr>
-                                <th>name</th>
-                                <th>Description</th>
-                                <th>stock</th>
-                            </tr>
-                            <tr th:each="thread : ${list}">
-                                <td th:text="${ thread.title }"></td>
-                                <td th:text="${ thread.content }"></td>
-                                
-                                <td>
-                                    <div class="btn-group " role="group " aria-lsabel="Basic example ">
-                                        <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
-                                            <i class='bx bx-pencil'></i>
-                                        </a>
-                                        <form onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
-                                            <button type="submit" class="btn btn-danger text-white "><i class='bx bx-trash'></i></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </div>
             
             <div th:each="thread : ${list}">
 
-                <form>
-                    <h2> <span th:text="${ thread.title }"></span> </h2>
-                    <p> <span th:text="${ thread.content }"></span> </p>
+                <form class="form-thread">
+                    <div class="thread">
+                        <h2> <span th:text="${ thread.title }"></span> </h2>
+                        <p> <span th:text="${ thread.content }"></span> </p>
+                    </div>
+                    <div class="btn-ud" role="group " aria-lsabel="Basic example ">
+                        <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
+                            <i class='bx bx-pencil'></i>
+                        </a>
+                        <div onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
+                            <button type="submit" class="btn btn-danger text-white "><i class='bx bx-trash'></i></button>
+                        </div>
+                    </div>
+                    <div class="btn-com">
+                        <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
+                            <i class='bx bx-pencil'></i>
+                        </a>
+                    </div>
                 </form>
+                
 
 
             </div>
@@ -48,7 +48,7 @@
 
 
 
-        <div th:replace="includes/base  :: footer"></div>
+
 
         <div th:replace="includes/base  :: scripts"></div>
     </body>
