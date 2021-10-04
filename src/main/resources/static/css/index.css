@@ -1,0 +1,35 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+
+code {
+    font-size: 80%;
+}
+
+.form-thread{
+    display: table;
+    
+}
+
+.thread{
+    display: table-cell;
+    
+}
+
+.btn-ud {
+    display: table-cell;
+    position: absolute;
+    margin-left: 25px;
+}
+
+.btn-com{
+    display: table-row;  
+}
