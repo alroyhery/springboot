@@ -18,6 +18,7 @@
                             <tr th:each="thread : ${list}">
                                 <td th:text="${ thread.title }"></td>
                                 <td th:text="${ thread.content }"></td>
+                                <td th:text="${ thread.category }"></td>
                                 
                                 <td>
                                     <div class="btn-group " role="group " aria-lsabel="Basic example ">
@@ -40,6 +41,7 @@
                 <form>
                     <h2> <span th:text="${ thread.title }"></span> </h2>
                     <p> <span th:text="${ thread.content }"></span> </p>
+                     <p> <span th:text="${ thread.category }"></span> </p>
                 </form>
 
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Hudya
+ * @author ASUS TUF
  */
 public interface ThreadInterface {
     List<Thread> getAll();

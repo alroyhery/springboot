@@ -29,6 +29,9 @@ public class Thread {
     
     @Column(name="content")
     private String content;
+    
+    @Column(name="category")
+    private String category;
 
     public void setTitle(String title) {
         this.title = title;
@@ -44,6 +47,14 @@ public class Thread {
 
     public String getContent() {
         return content;
+    }
+    
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
     }
     
     public void setId(long id) {
