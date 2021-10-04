@@ -5,7 +5,6 @@
         <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
-            <div th:replace="includes/base :: head-content"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
@@ -34,6 +33,16 @@
                         </table>
                     </div>
                 </div>
+            </div>
+            
+            <div th:each="thread : ${list}">
+
+                <form>
+                    <h2> <span th:text="${ thread.title }"></span> </h2>
+                    <p> <span th:text="${ thread.content }"></span> </p>
+                </form>
+
+
             </div>
         </main>
 
