@@ -5,33 +5,26 @@
         <header th:replace="includes/base :: navbar"></header>
 
         <main role="main " class="container">
-            
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
                         <h1>Hello, <span th:text="${session.name}"></span>!</h1>
                         <table class="table table-hover">
-<<<<<<< Updated upstream
                             <tr>
-                                <th>Title</th>
+                                <th>name</th>
                                 <th>Description</th>
-                                <th>Action</th>
+                                <th>stock</th>
                             </tr>
-                            <tr th:each="todo : ${list}">
-                                <td th:text="${ todo.title }"></td>
-                                <td th:text="${ todo.description }"></td>
-=======
                             <tr th:each="thread : ${list}">
                                 <td th:text="${ thread.title }"></td>
                                 <td th:text="${ thread.content }"></td>
                                 
->>>>>>> Stashed changes
                                 <td>
-                                    <div class="btn-group " role="group " aria-label="Basic example ">
-                                        <a th:href="@{/todo/{id}/edit(id=${ todo.id })}"  class="btn btn-info text-white ">
+                                    <div class="btn-group " role="group " aria-lsabel="Basic example ">
+                                        <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
                                             <i class='bx bx-pencil'></i>
                                         </a>
-                                        <form onSubmit="return confirm('Do you really want to elete to-do?')" method="POST" action="#" th:action="@{/todo/{id}/delete(id=${ todo.id })}">
+                                        <form onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
                                             <button type="submit" class="btn btn-danger text-white "><i class='bx bx-trash'></i></button>
                                         </form>
                                     </div>
@@ -43,15 +36,14 @@
             </div>
             
             <div th:each="thread : ${list}">
-                
+
                 <form>
                     <h2> <span th:text="${ thread.title }"></span> </h2>
                     <p> <span th:text="${ thread.content }"></span> </p>
                 </form>
 
-                
+
             </div>
-            
         </main>
 
 
