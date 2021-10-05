@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2021 at 06:04 PM
+-- Generation Time: Oct 05, 2021 at 06:09 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -47,9 +47,19 @@ INSERT INTO `category` (`id_category`, `categoryname`) VALUES
 
 CREATE TABLE `comment` (
   `id_comment` int(11) NOT NULL,
-  `comment` text NOT NULL,
-  `id_user` int(11) NOT NULL
+  `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id_comment`, `content`) VALUES
+(1, 'asd'),
+(4, 'asdadsasdasd'),
+(5, 'komentar 1'),
+(6, 'komentar 2'),
+(7, 'asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -128,8 +138,7 @@ ALTER TABLE `category`
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id_comment`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_comment`);
 
 --
 -- Indexes for table `report`
@@ -166,7 +175,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `report`
