@@ -24,7 +24,9 @@
                         <h2> <span th:text="${ thread.title }"></span> </h2>
                         <p> <span th:text="${ thread.content }"></span> </p>
                         <p> <span th:text="${ thread.category }"></span> </p>
-                        
+                        <div th:each="comment : ${comment}">
+                            <p> <span th:text="${ comment.content }"></span> </p>
+                        </div>
                     </div>
                     <div class="btn-ud" role="group " aria-lsabel="Basic example ">
                         <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
