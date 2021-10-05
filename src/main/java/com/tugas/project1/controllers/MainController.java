@@ -5,6 +5,7 @@
  */
 package com.tugas.project1.controllers;
 
+import com.tugas.project1.interfaces.CommentInterface;
 import com.tugas.project1.models.Thread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.tugas.project1.interfaces.ThreadInterface;
+import com.tugas.project1.models.Comment;
 
 /**
  *
@@ -23,6 +25,7 @@ import com.tugas.project1.interfaces.ThreadInterface;
 public class MainController {
     @Autowired
     private ThreadInterface threadInterface;
+  
 
     @GetMapping("/")
     public String index(Model model) {
@@ -44,6 +47,8 @@ public class MainController {
         threadInterface.store(inventory);
         return "redirect:/";
     }
+    
+   
     
     @GetMapping("/thread/{id}/edit")
     public String edit(@PathVariable(value = "id") long id, Model model) {
