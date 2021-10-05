@@ -25,11 +25,15 @@ import com.tugas.project1.models.Comment;
 public class MainController {
     @Autowired
     private ThreadInterface threadInterface;
+    @Autowired
+    private CommentInterface commentInterface;
   
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("list", threadInterface.getAll());
+        //model.addAttribute("comment", commentInterface.getAll());
+        
         return "index";
     }
 
