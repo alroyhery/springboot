@@ -105,8 +105,8 @@ public class MainController {
     @GetMapping("/comment/send")
     public String make(Model model) {
         
-        Thread thread = new Thread();
-        List<Thread> threads = threadInterface.getAll();
+        
+        List<Thread> thread = threadInterface.getAll();
         model.addAttribute("thread", thread);
         
         Comment comment = new Comment();
