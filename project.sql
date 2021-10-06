@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2021 at 03:31 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Oct 06, 2021 at 06:16 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,18 +49,18 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
-  `content` varchar(250) NOT NULL
+  `content` varchar(230) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`id`, `content`) VALUES
-(1, 'qwerty'),
-(3, 'zxcvbn'),
-(4, '1asda3234'),
-(5, 'adly gay');
+INSERT INTO `comment` (`id`, `content`, `user_id`, `thread_id`, `created_at`) VALUES
+(1, 'INI KOMENTAR 1', 2, 4, '2021-10-06 22:08:26');
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,9 @@ CREATE TABLE `thread` (
 --
 
 INSERT INTO `thread` (`id`, `title`, `content`, `user_id`, `category_id`, `created_at`) VALUES
-(2, 'adly sang pendekar pedang', 'di suatu hari aku sedang jogmafo;lfkapsdad', 1, 2, '2021-10-06 20:19:56');
+(2, 'adly sang pendekar pedang', 'di suatu hari aku sedang jogmafo;lfkapsdad', 1, 2, '2021-10-06 20:19:56'),
+(4, 'noblesse', 'aku suka webtoon ini karena Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet velit ac augue commodo, eget suscipit metus lobortis. Nulla placerat eros et leo ultrices, non posuere massa finibus. Curabitur ac semper elit. Phasellus id lacinia nisi. Proin vulputate, augue eu ultrices feugiat, erat orci varius augue, ac suscipit lectus ligula nec ligula. Aliquam erat volutpat. Aenean dolor odio, egestas in velit quis, dignissim pellentesque turpis. Quisque porta viverra diam, non euismod sapien iaculis egestas. Nulla facilisi. Donec scelerisque magna at leo suscipit pretium eget nec metus. Sed placerat dui et diam tincidunt lacinia. Morbi suscipit vestibulum nunc, sit amet facilisis nunc cursus a.', 1, 2, '2021-10-06 20:43:47'),
+(5, 'asdasdasdasd', 'asdkasdlasdkasldaslkdjaskd', 1, 2, '2021-10-06 23:07:52');
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `created_at`) VALUES
-(1, 'qwerty', '123@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2021-10-02 23:13:55');
+(1, 'qwerty', '123@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2021-10-02 23:13:55'),
+(2, 'adly', 'adly@a.com', '202cb962ac59075b964b07152d234b70', '2021-10-06 20:43:26');
 
 --
 -- Indexes for dumped tables
@@ -134,7 +137,9 @@ ALTER TABLE `category`
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `thread_id` (`thread_id`);
 
 --
 -- Indexes for table `report`
@@ -173,7 +178,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -185,17 +190,24 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`thread_id`) REFERENCES `thread` (`id`);
 
 --
 -- Constraints for table `thread`
