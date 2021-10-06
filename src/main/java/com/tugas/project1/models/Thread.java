@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,8 +32,13 @@ public class Thread {
     @Column(name="content")
     private String content;
     
-    @Column(name="category")
-    private String category;
+   @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+    
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
     public void setTitle(String title) {
         this.title = title;
@@ -49,13 +56,6 @@ public class Thread {
         return content;
     }
     
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getCategory() {
-        return category;
-    }
     
     public void setId(long id) {
         this.id = id;
@@ -63,6 +63,22 @@ public class Thread {
 
     public long getId() {
         return id;
+    }
+    
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
 

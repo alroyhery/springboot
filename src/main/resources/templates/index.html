@@ -23,7 +23,9 @@
                     <div class="thread">
                         <h2> <span th:text="${ thread.title }"></span> </h2>
                         <p> <span th:text="${ thread.content }"></span> </p>
-                        <p> <span th:text="${ thread.category }"></span> </p>
+                        <h2> <span  th:text="${ thread.user.name}"></span> </h2>
+                        <p> <span th:text="${ thread.category.name}"></span> </p>
+                        
                         
                     </div>
                     <div class="btn-ud" role="group " aria-lsabel="Basic example ">

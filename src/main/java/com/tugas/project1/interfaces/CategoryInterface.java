@@ -5,18 +5,13 @@
  */
 package com.tugas.project1.interfaces;
 
-
-import com.tugas.project1.models.Thread;
+import com.tugas.project1.models.Category;
 import java.util.List;
 
 /**
  *
  * @author ASUS TUF
  */
-public interface ThreadInterface {
-    List<Thread> getAll();
-    void store(Thread thread);
-    Thread getById(long id);
-    void delete(long id);
-    List<Thread> findByUserId(long user_id);
+public interface CategoryInterface {
+    List<Category> getAll();
 }

@@ -19,34 +19,44 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ThreadService implements ThreadInterface {
+
     @Autowired
     private ThreadRepository threadRepository;
-    
+
     @Override
     public List<Thread> getAll() {
         return threadRepository.findAll();
+    }   
+    
+        @Override
+    public List<Thread> findByUserId(long user_id) {
+        return threadRepository.findByUserId(user_id);
     }
 
     @Override
     public void store(Thread thread) {
         this.threadRepository.save(thread);
     }
-    
+
     @Override
     public Thread getById(long id) {
-        Optional < Thread > optional = threadRepository.findById(id);
+        Optional< Thread> optional = threadRepository.findById(id);
 
-     if (!optional.isPresent()) {
-        throw new RuntimeException(" Todo not found for id :: " + id);
+        if (!optional.isPresent()) {
+            throw new RuntimeException(" Todo not found for id :: " + id);
+        }
+
+        Thread thread = optional.get();
+        return thread;
     }
-
-    Thread thread = optional.get();
-    return thread;
-}
 
     @Override
     public void delete(long id) {
-    this.threadRepository.deleteById(id);
-}
+        this.threadRepository.deleteById(id);
+    }
+    
+    
+    
+    
 }
 

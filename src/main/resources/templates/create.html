@@ -24,10 +24,11 @@
                             </div>
                             
                             <div class="form-group">
-                                <h2>Category</h2>
-                                <textarea th:field="*{category}" rows="3" class="form-control" id="example-inventory-desc" aria-describedby="emailHelp" placeholder="Tuliskan apa yang kamu pikirkan"></textarea>
-                                <small id="emailHelp" class="form-text text-muted">Kamu dapat menuliskan isi dari thread pada kolom ini.</small>
-
+                                   <select th:field="*{category}" class="form-control">
+                                   <th:block th:each="cat : ${category}">
+                                   <option th:text="${cat.name}" th:value="${cat.id}"></option>
+                                   </th:block>
+                                   </select>
                             </div>
                             
                            

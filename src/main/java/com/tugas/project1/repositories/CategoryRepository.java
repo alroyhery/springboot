@@ -5,8 +5,7 @@
  */
 package com.tugas.project1.repositories;
 
-import com.tugas.project1.models.Thread;
-import java.util.List;
+import com.tugas.project1.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author ASUS TUF
  */
 @Repository
-public interface ThreadRepository extends JpaRepository<Thread, Long> {
-    List<Thread> findByUserId(long user_id);
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+    
 }
