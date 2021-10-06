@@ -35,6 +35,9 @@ public class MainController {
     
     @Autowired
     private CategoryInterface categoryInterface;
+    
+    @Autowired
+    private CommentInterface commentInterface;
 
 
     @GetMapping("/")
@@ -46,6 +49,7 @@ public class MainController {
         List<Thread> threads = threadInterface.findByUserId(user_id);
         
         model.addAttribute("list", threadInterface.getAll());
+        model.addAttribute("comment", commentInterface.getAll());
 
         
         model.addAttribute("threads", threads);
@@ -95,6 +99,32 @@ public class MainController {
     @PostMapping("/thread/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
        threadInterface.delete(id);
+        return "redirect:/";
+    }
+    
+    @GetMapping("/comment/send")
+    public String make(Model model) {
+        
+        Thread thread = new Thread();
+        List<Thread> threads = threadInterface.getAll();
+        model.addAttribute("thread", thread);
+        
+        Comment comment = new Comment();
+        model.addAttribute("comment", comment);
+        
+        return "comment";
+    }
+
+    @PostMapping("/comment/store")
+    public String send(@ModelAttribute("comment") Comment comment, HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        
+        User user = new User();
+        user.setId((long) session.getAttribute("id"));
+        
+        comment.setUser(user);
+        
+        commentInterface.send(comment);
         return "redirect:/";
     }
 }

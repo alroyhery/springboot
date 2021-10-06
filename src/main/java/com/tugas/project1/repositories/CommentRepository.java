@@ -6,6 +6,7 @@
 package com.tugas.project1.repositories;
 
 import com.tugas.project1.models.Comment;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CommentRepository extends JpaRepository<Comment,Long> {
-    
+    List<Comment> findByUserId(long user_id);
+    List<Comment> findByThreadId(long user_id);
 }

@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,30 @@ public class Comment {
     
     @Column(name="content")
     private String content;
+    
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+    
+    @ManyToOne
+    @JoinColumn(name="thread_id")
+    private Thread thread;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
 
     
 

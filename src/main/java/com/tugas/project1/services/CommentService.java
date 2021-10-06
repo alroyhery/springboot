@@ -31,4 +31,14 @@ public class CommentService implements CommentInterface{
     public void send(Comment comment) {
         this.commentRepository.save(comment);
     }
+    
+    @Override
+    public List<Comment> findByUserId(long user_id) {
+        return commentRepository.findByUserId(user_id);
+    }
+    
+    @Override
+    public List<Comment> findByThreadId(long thread_id) {
+        return commentRepository.findByThreadId(thread_id);
+    }
 }
