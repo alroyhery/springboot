@@ -31,10 +31,11 @@ import javax.servlet.http.HttpSession;
 public class MainController {
     @Autowired
     private ThreadInterface threadInterface;
+
     
     @Autowired
     private CategoryInterface categoryInterface;
-  
+
 
     @GetMapping("/")
     public String index(Model model,  HttpServletRequest request) {
@@ -45,8 +46,11 @@ public class MainController {
         List<Thread> threads = threadInterface.findByUserId(user_id);
         
         model.addAttribute("list", threadInterface.getAll());
+
         
         model.addAttribute("threads", threads);
+
+
         return "index";
     }
 

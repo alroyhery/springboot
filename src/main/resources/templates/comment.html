@@ -8,18 +8,11 @@
                 <div class="row mb-4">
                     <div class="col-12">
                         <form method="POST" action="#" th:action="@{/comment/store}" th:object="${comment}">
-                            
-
-                          
-                            
                            <div class="form-group">
-
                                 <h2>Comment</h2>
-                                <input th:field="*{content}" type="text" class="form-control" id="example-inventory-name" aria-describedby="emailHelp" placeholder="Masukkan judul threadmu" required>
-                                <small id="emailHelp" class="form-text text-muted">Judul thread minimal berisi 5 karakter.</small>
+                                <input th:field="*{content}" type="text" class="form-control" id="example-inventory-name" aria-describedby="emailHelp" placeholder="Tulis pendapatmu disini" required>
+                                <small id="emailHelp" class="form-text text-muted">Tuliskan apa yang kamu pikirkan mengenai thread ini.</small>
                             </div>
-                            
-                           
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
