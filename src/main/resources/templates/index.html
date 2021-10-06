@@ -25,20 +25,24 @@
                         <p> <span th:text="${ thread.content }"></span> </p>
                         <h2> <span  th:text="${ thread.user.name}"></span> </h2>
                         <p> <span th:text="${ thread.category.name}"></span> </p>
-                        
+                        <div th:each="comment : ${comment}">
+                            <p> <span tf:if="(${comment.id} == ${thread.id} )" th:text="${comment.user.name}"></span></p>
+                            <p> <span tf:if="(${comment.id} == ${thread.id} )" th:text="${comment.content}"></span></p>
+                        </div>
+
                         
 
                     </div>
                     <div class="btn-ud" role="group " aria-lsabel="Basic example ">
-                        <a th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white ">
+                        <a tf:if="(${thread.user.id} == ${thread.id} )" th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white">
                             EDIT
                         </a>
-                        <form onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
+                        <form tf:if="(${thread.user.id} == ${thread.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
                             <button type="submit" class="btn btn-danger text-white ">DEL</button>
                         </form>
                     </div>
                     <div class="btn-com">
-                        <a th:href="@{/comment/create}"  class="btn btn-info text-white ">
+                        <a th:href="@{/comment/send}"  class="btn btn-info text-white ">
                             COMMENT
                         </a>
                     </div>
