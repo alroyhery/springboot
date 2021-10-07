@@ -36,6 +36,7 @@ public class MainController {
     @Autowired
     private CategoryInterface categoryInterface;
     
+    //ngetest comment Hudya
     @Autowired
     private CommentInterface commentInterface;
 
