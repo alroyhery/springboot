@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2021 at 06:16 PM
+-- Generation Time: Oct 06, 2021 at 07:10 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -99,7 +99,8 @@ CREATE TABLE `thread` (
 INSERT INTO `thread` (`id`, `title`, `content`, `user_id`, `category_id`, `created_at`) VALUES
 (2, 'adly sang pendekar pedang', 'di suatu hari aku sedang jogmafo;lfkapsdad', 1, 2, '2021-10-06 20:19:56'),
 (4, 'noblesse', 'aku suka webtoon ini karena Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet velit ac augue commodo, eget suscipit metus lobortis. Nulla placerat eros et leo ultrices, non posuere massa finibus. Curabitur ac semper elit. Phasellus id lacinia nisi. Proin vulputate, augue eu ultrices feugiat, erat orci varius augue, ac suscipit lectus ligula nec ligula. Aliquam erat volutpat. Aenean dolor odio, egestas in velit quis, dignissim pellentesque turpis. Quisque porta viverra diam, non euismod sapien iaculis egestas. Nulla facilisi. Donec scelerisque magna at leo suscipit pretium eget nec metus. Sed placerat dui et diam tincidunt lacinia. Morbi suscipit vestibulum nunc, sit amet facilisis nunc cursus a.', 1, 2, '2021-10-06 20:43:47'),
-(5, 'asdasdasdasd', 'asdkasdlasdkasldaslkdjaskd', 1, 2, '2021-10-06 23:07:52');
+(5, 'asdasdasdasd', 'asdkasdlasdkasldaslkdjaskd', 1, 2, '2021-10-06 23:07:52'),
+(6, 'naruto', 'ASHAHHAHAHAHAHAHHA KURAMA MATI AHAHHAHAHAHAHHAHAHAH', 2, 2, '2021-10-06 23:48:18');
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
