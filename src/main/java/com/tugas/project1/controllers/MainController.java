@@ -66,7 +66,7 @@ public class MainController {
     @GetMapping("/thread/create")
     public String create(Model model) {
         
-       List<Category> category = categoryInterface.getAll();
+        List<Category> category = categoryInterface.getAll();
         model.addAttribute("category", category);
         
         
@@ -108,8 +108,8 @@ public class MainController {
         return "redirect:/";
     }
     
-    @GetMapping("/thread/{id}/comment/")
-    public String comment(@PathVariable(value = "id")long id, Model model) {
+    @GetMapping("/thread/{id}/comment")
+    public String comment(@PathVariable(value = "id") long id, Model model) {
         Thread thread = threadInterface.getById(id);
         model.addAttribute("thread", thread);
 
@@ -120,14 +120,17 @@ public class MainController {
     }
 
     @PostMapping("/thread/{id}/comment/store")
-    public String send(@ModelAttribute("comment") Comment comment, HttpServletRequest request) {
+    public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, HttpServletRequest request, long id) {
         HttpSession session = request.getSession(true);
+        
         
         User user = new User();
         user.setId((long) session.getAttribute("id"));
         
+        thread = threadInterface.getById(id);
         
         comment.setUser(user);
+        comment.setThread(thread);
         
         commentInterface.send(comment);
         return "redirect:/";
