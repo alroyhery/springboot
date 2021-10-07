@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2021 at 07:10 PM
+-- Generation Time: Oct 07, 2021 at 06:21 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -60,7 +60,10 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `content`, `user_id`, `thread_id`, `created_at`) VALUES
-(1, 'INI KOMENTAR 1', 2, 4, '2021-10-06 22:08:26');
+(9, 'oh iya sasuke kehilangan rinnegannya', 2, 11, '2021-10-07 23:13:08'),
+(10, 'test', 2, 11, '2021-10-07 23:13:15'),
+(11, 'yang bener???', 1, 11, '2021-10-07 23:14:39'),
+(12, 'oh ya??', 1, 12, '2021-10-07 23:15:35');
 
 -- --------------------------------------------------------
 
@@ -97,10 +100,10 @@ CREATE TABLE `thread` (
 --
 
 INSERT INTO `thread` (`id`, `title`, `content`, `user_id`, `category_id`, `created_at`) VALUES
-(2, 'adly sang pendekar pedang', 'di suatu hari aku sedang jogmafo;lfkapsdad', 1, 2, '2021-10-06 20:19:56'),
-(4, 'noblesse', 'aku suka webtoon ini karena Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet velit ac augue commodo, eget suscipit metus lobortis. Nulla placerat eros et leo ultrices, non posuere massa finibus. Curabitur ac semper elit. Phasellus id lacinia nisi. Proin vulputate, augue eu ultrices feugiat, erat orci varius augue, ac suscipit lectus ligula nec ligula. Aliquam erat volutpat. Aenean dolor odio, egestas in velit quis, dignissim pellentesque turpis. Quisque porta viverra diam, non euismod sapien iaculis egestas. Nulla facilisi. Donec scelerisque magna at leo suscipit pretium eget nec metus. Sed placerat dui et diam tincidunt lacinia. Morbi suscipit vestibulum nunc, sit amet facilisis nunc cursus a.', 1, 2, '2021-10-06 20:43:47'),
-(5, 'asdasdasdasd', 'asdkasdlasdkasldaslkdjaskd', 1, 2, '2021-10-06 23:07:52'),
-(6, 'naruto', 'ASHAHHAHAHAHAHAHHA KURAMA MATI AHAHHAHAHAHAHHAHAHAH', 2, 2, '2021-10-06 23:48:18');
+(11, 'Naruto', 'Kurama baru saja mati gaes!!!!!', 2, 2, '2021-10-07 23:12:53'),
+(12, 'Jualan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 2, 1, '2021-10-07 23:13:55'),
+(13, 'asdasdasd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 2, 1, '2021-10-07 23:14:05'),
+(14, 'Aku ada spoiler', 'Spoilernya Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 1, 1, '2021-10-07 23:15:28');
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -191,7 +194,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user`
