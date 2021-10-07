@@ -7,7 +7,7 @@
             <div class="container mt-5">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <form method="POST" action="#" th:action="@{/comment/store}" th:object="${comment}">
+                        <form method="POST" action="#" th:each="thread : ${thread}" th:action="@{/thread/{id}/comment/store(id=${ thread.id })}" th:object="${comment}">
                            <div class="form-group">
                                 <h2>Comment</h2>
                                 <input th:field="*{content}" type="text" class="form-control" id="example-inventory-name" aria-describedby="emailHelp" placeholder="Tulis pendapatmu disini" required>

@@ -108,22 +108,18 @@ public class MainController {
         return "redirect:/";
     }
     
-    @GetMapping("/comment/send")
-    public String make(Model model) {
-        
-        
-        List<Thread> thread = threadInterface.getAll();
+    @GetMapping("/thread/{id}/comment/")
+    public String comment(@PathVariable(value = "id")long id, Model model) {
+        Thread thread = threadInterface.getById(id);
         model.addAttribute("thread", thread);
-        
-        
-        
+
         Comment comment = new Comment();
         model.addAttribute("comment", comment);
         
         return "comment";
     }
 
-    @PostMapping("/comment/store")
+    @PostMapping("/thread/{id}/comment/store")
     public String send(@ModelAttribute("comment") Comment comment, HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         
