@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.tugas.project1.interfaces.ThreadInterface;
+import com.tugas.project1.interfaces.UserInterface;
 import com.tugas.project1.models.Category;
 import com.tugas.project1.models.Comment;
 import com.tugas.project1.models.User;
@@ -39,6 +40,9 @@ public class MainController {
     
     @Autowired
     private CommentInterface commentInterface;
+    
+    @Autowired
+    private UserInterface userInterface;
 
 
     @GetMapping("/")
@@ -64,6 +68,7 @@ public class MainController {
         
        List<Category> category = categoryInterface.getAll();
         model.addAttribute("category", category);
+        
         
         Thread thread = new Thread();
         model.addAttribute("thread", thread);
@@ -110,6 +115,8 @@ public class MainController {
         List<Thread> thread = threadInterface.getAll();
         model.addAttribute("thread", thread);
         
+        
+        
         Comment comment = new Comment();
         model.addAttribute("comment", comment);
         
@@ -122,6 +129,7 @@ public class MainController {
         
         User user = new User();
         user.setId((long) session.getAttribute("id"));
+        
         
         comment.setUser(user);
         

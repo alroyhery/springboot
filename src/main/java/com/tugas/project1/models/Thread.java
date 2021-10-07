@@ -41,7 +41,7 @@ public class Thread {
     
     @OneToMany
     @JoinColumn(name="thread_id")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comment = new ArrayList<>();
     
     
     @ManyToOne
@@ -87,6 +87,14 @@ public class Thread {
 
     public User getUser() {
         return user;
+    }
+    
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
     }
 }
 
