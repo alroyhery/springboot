@@ -26,8 +26,8 @@
                         <h2> <span  th:text="${ thread.user.name}"></span> </h2>
                         <p> <span th:text="${ thread.category.name}"></span> </p>
                         <div th:each="comment : ${comment}">
-                            <p> <span th:if="(${comment.id} == ${thread.id} )" th:text="${comment.user.name}"></span></p>
-                            <p> <span th:if="(${comment.id} == ${thread.id} )" th:text="${comment.content}"></span></p>
+                            <p> <span th:text="${comment.user.name}"></span></p>
+                            <p> <span th:text="${comment.content}"></span></p>
                         </div>
 
                         
