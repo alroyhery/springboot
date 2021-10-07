@@ -32,7 +32,7 @@ public class MainController {
     @Autowired
     private ThreadInterface threadInterface;
 
-    
+    //ngetest commentar
     @Autowired
     private CategoryInterface categoryInterface;
     
