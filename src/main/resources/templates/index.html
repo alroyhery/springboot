@@ -42,7 +42,7 @@
                         </form>
                     </div>
                     <div class="btn-com">
-                        <a th:href="@{/comment/send}"  class="btn btn-info text-white ">
+                        <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
                             COMMENT
                         </a>
                     </div>
