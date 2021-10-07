@@ -39,8 +39,8 @@ public class MainController {
     //ngetest comment Hudya
     @Autowired
     private CommentInterface commentInterface;
-
-
+    
+    //ngetest comment adlyyy
     @GetMapping("/")
     public String index(Model model,  HttpServletRequest request) {
         HttpSession session = request.getSession(true);
