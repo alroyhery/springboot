@@ -6,6 +6,7 @@
         <link th:href="@{/css/index.css}" rel="stylesheet" />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Homepage</title>
     </head>
     <body>
@@ -22,32 +23,57 @@
                 <div class="form-thread">
                     <div class="thread">
                         <h2> <span th:text="${ thread.title }"></span> </h2>
-                        <p> <span th:text="${ thread.content }"></span> </p>
-                        <h2> <span  th:text="${ thread.user.name}"></span> </h2>
-                        <p> <span th:text="${ thread.category.name}"></span> </p>
-                        <div th:each="comment : ${comment}">
-                            <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.user.name}"></span></p>
-                            <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.content}"></span></p>
+                        <div id="moreOne">
+                            <p> <span th:text="${ thread.content }"></span> </p>
+                            <h2> <span  th:text="${ thread.user.name}"></span> </h2>
+                            <p> <span th:text="${ thread.category.name}"></span> </p>
+                            <div th:each="comment : ${comment}">
+                                <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.user.name}"></span></p>
+                                <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.content}"></span></p>
+                            </div>
                         </div>
-
-                        
-
                     </div>
-                    <div class="btn-ud" role="group " aria-lsabel="Basic example ">
-                        <a th:if="(${session.id} == ${thread.user.id} )" th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white">
-                            EDIT
-                        </a>
-                        <form th:if="(${session.id} == ${thread.user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
-                            <button type="submit" class="btn btn-danger text-white ">DEL</button>
-                        </form>
+                    <div id="moreTwo"> 
+                        <div class="btn-ud" role="group " aria-lsabel="Basic example ">
+                            <a th:if="(${session.id} == ${thread.user.id} )" th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white">
+                                EDIT
+                            </a>
+                            <form th:if="(${session.id} == ${thread.user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
+                                <button type="submit" class="btn btn-danger text-white ">DEL</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="btn-com">
-                        <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
-                            COMMENT
-                        </a>
+                    <div id="moreThree">
+                        <div class="btn-com">
+                            <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
+                                COMMENT
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <div>
+                    <button onclick="showBtn()" id="myBtn">Show Thread</button>
+                </div>
             </div>
+            <script>
+                function showBtn() {
+                  var more1 = document.getElementById("moreOne");
+                  var more2 = document.getElementById("moreTwo");
+                  var more3 = document.getElementById("moreThree");
+                  var btnText = document.getElementById("myBtn");
+
+                  if (more1.style.display === "none") {
+                    more2.style.display = "none";
+                    more3.style.display = "none";
+                    btnText.innerHTML = "Show Thread";
+                  } else {
+                    more1.style.display = "table-cell";
+                    more2.style.display = "table-cell";
+                    more3.style.display = "table-row";
+                    btnText.innerHTML = "Minimize Thread"; 
+                  }
+                }   
+            </script>
         </main>
 
         <div th:replace="includes/base  :: scripts"></div>

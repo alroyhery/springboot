@@ -33,3 +33,15 @@ code {
 .btn-com{
     display: table-row;  
 }
+
+#moreOne{
+    display: none;
+}
+
+#moreTwo{
+    display: none;
+}
+
+#moreThree{
+    display: none;
+}
