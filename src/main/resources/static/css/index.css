@@ -31,10 +31,11 @@ code {
 }
 
 .btn-com{
-    display: table-row;  
+    display: table-cell;
+    position: absolute;
 }
 
-#moreOne{
+/*#moreOne{
     display: none;
 }
 
@@ -44,4 +45,4 @@ code {
 
 #moreThree{
     display: none;
-}
+}*/

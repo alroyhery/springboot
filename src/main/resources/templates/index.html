@@ -23,7 +23,7 @@
                 <div class="form-thread">
                     <div class="thread">
                         <h2> <span th:text="${ thread.title }"></span> </h2>
-                        <div id="moreOne">
+                        <div th:id="'more-'+${ thread.id }" style="display: none;">
                             <p> <span th:text="${ thread.content }"></span> </p>
                             <h2> <span  th:text="${ thread.user.name}"></span> </h2>
                             <p> <span th:text="${ thread.category.name}"></span> </p>
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="moreTwo"> 
+                    <div th:id="'more2-'+${ thread.id }" style="display:none;"> 
                         <div class="btn-ud" role="group " aria-lsabel="Basic example ">
                             <a th:if="(${session.id} == ${thread.user.id} )" th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white">
                                 EDIT
@@ -41,41 +41,72 @@
                             <form th:if="(${session.id} == ${thread.user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
                                 <button type="submit" class="btn btn-danger text-white ">DEL</button>
                             </form>
+                            <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
+                                COMEN
+                            </a>
                         </div>
                     </div>
-                    <div id="moreThree">
+                    <div th:id="'more3-'+${ thread.id }" style="display:none;">
                         <div class="btn-com">
-                            <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
-                                COMMENT
-                            </a>
+
                         </div>
                     </div>
                 </div>
                 <div>
-                    <button onclick="showBtn()" id="myBtn">Show Thread</button>
+                    <button th:data-id="${thread.id}" class="tampil">Check Thread</button>
                 </div>
             </div>
-            <script>
+        </main>
+
+        <div th:replace="includes/base  :: scripts"></div>
+        
+<!-- YANG INI CUMAN BUAT BISA DI SALAH SATU THREAD DOANG -->  
+       <!--    <script>
                 function showBtn() {
                   var more1 = document.getElementById("moreOne");
                   var more2 = document.getElementById("moreTwo");
                   var more3 = document.getElementById("moreThree");
                   var btnText = document.getElementById("myBtn");
-
-                  if (more1.style.display === "none") {
-                    more2.style.display = "none";
+                  
+                  if (more2.style.display === "none") {
+                    more1.style.display = "none"  
+                    more2.style.display = "table-cell";
                     more3.style.display = "none";
                     btnText.innerHTML = "Show Thread";
-                  } else {
+                  } else{
                     more1.style.display = "table-cell";
-                    more2.style.display = "table-cell";
+                    more2.style.display = "none";
                     more3.style.display = "table-row";
-                    btnText.innerHTML = "Minimize Thread"; 
+                    btnText.innerHTML = "Minimize Thread";
                   }
                 }   
-            </script>
-        </main>
-
-        <div th:replace="includes/base  :: scripts"></div>
+            </script> -->
+ 
+ <!-- YANG INI CUMAN BUAT NGASIH DETAIL TAPI GAK BISA DITUTUP LAGI -->      
+ <!--     <script>
+            $(function() {
+                 $(".tampil").click(function() {
+                   var id = $(this).data('id')
+                   console.log(id)
+                   $("#more-" + id).css("display", "table-cell");
+                   $("#more2-" + id).css("display", "table-cell");
+                   $("#more3-" + id).css("display", "table-row");
+                 })
+            });
+            
+       </script> --> 
+ 
+<!-- YANG INI BISA BUKA TUTUP TAPI NAMANYA TETEP CHECK THREAD -->  
+         <script>
+            $(document).ready(function(){
+              $(".tampil").click(function(){
+                  var id = $(this).data('id')
+                  console.log(id)
+                $("#more-"+id).toggle();
+                $("#more2-"+id).toggle();
+                $("#more3-"+id).toggle();
+              });
+            });
+         </script> 
     </body>
 </html>
