@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link th:href="@{/css/index.css}" rel="stylesheet" />
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <head th:replace="includes/base :: css">
         <title>Homepage</title>
+        <link th:href="@{/css/index.css}" rel="stylesheet" />
     </head>
     <body>
+        <header th:replace="includes/base :: navbar"></header>
+        
         <main role="main " class="container">
-            <h1>Hello, <span th:text="${session.name}"></span>!</h1>
-
-            <div> 
+            <h1 class="mulai">Apa yang ada di pikiranmu, <span th:text="${session.name}"></span>?</h1>
+            <div class="index-submit"> 
                 <a th:href="@{/thread/create}">
-                    <button type="submit">POST</button>
+                    <button type="submit" class="btn btn-success text-white">POST</button>
                 </a>
             </div>
+            <hr>
 
-            <div th:each="thread : ${list}">
+            <div th:each="thread : ${list}" class="thread">
                 <div class="form-thread">
-                    <div class="thread">
-                        <h2> <span th:text="${ thread.title }"></span> </h2>
-                        <div> 
+                    <div class="container-thread">
+                        <br><br>
+                        <i class="bi bi-person-circle"></i>
+                        <h2> <span th:text="${ thread.user.name }"></span> membagikan sesuatu dengan judul <span th:text="${ thread.title }"></span></h2>
+                        <div style="text-align: center;"> 
                             <a th:href="@{/thread/{id}/postdetail(id=${ thread.id })}">
-                                <button type="submit">Check Thread</button>
+                                <button type="submit" class="btn btn-info text-white">Check Thread</button>
                             </a>
                         </div>
+                        <p style="visibility: hidden;">sdfsdfsdfsdfsdfsdfsdfsd</p>
                     </div>
                 </div>
             </div>
@@ -35,6 +35,8 @@
 
         </main>
 
+        <div th:replace="includes/base  :: footer"></div>
+        
         <div th:replace="includes/base  :: scripts"></div>      
 
     </body>

@@ -1,45 +1,52 @@
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link th:href="@{/css/index.css}" rel="stylesheet" />
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <title>Homepage</title>
+    <head th:replace="includes/base :: css">
+        <title>Thread</title>
     </head>
 
     <body>  
-
-        <div>
+        <header th:replace="includes/base :: navbar"></header>
+        
+        <main role="main " class="container">
             <div class="form-thread">
                 <div class="thread" th:object="${thread}">
-                    <h2> <span th:text="*{title}"></span> </h2>
-                    <p> <span th:text="*{content}"></span> </p>
-                    <h2> <span  th:text="*{user.name}"></span> </h2>
-                    <p> <span th:text="*{category.name}"></span> </p>
+                    <br>
+                    <h3> <span class="badge badge-warning">AUTHOR</span> <span  th:text="*{user.name}"></span> 
+                        <span style="float: right; ">
+                            <a th:if="(${session.id} == *{user.id} )" th:href="@{/thread/{id}/edit(id=*{ id })}"  class="btn btn-warning text-white">
+                                <i class='bx bx-pencil'></i>
+                            </a>
+                            
+                            <a>
+                                <form th:if="(${session.id} == *{user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=*{ id })}">
+                                    <button type="submit" class="btn btn-danger text-white ">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </form>
+                            </a>        
+                        </span> 
+                    </h3>
+                    <h1 class="display-1"> <span th:text="*{title}"></span> </h1>
+                    <p class="isi-thread"> <span th:text="*{content}"></span> </p>
+                    <p style="text-align: right;"> <span class="badge badge-info badge-sm" th:text="*{category.name}"></span> </p>
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                     <div th:each="comment : ${comment}">
                         <p> <span th:if="(${comment.thread.id} == *{id})" th:text="${comment.user.name}"></span></p>
-                        <p> <span th:if="(${comment.thread.id} == *{id})"th:text="${comment.content}"></span></p>
+                        <p class="isi-comment"> <span th:if="(${comment.thread.id} == *{id})"th:text="${comment.content}"></span></p>
+                        <hr th:if="(${comment.thread.id} == *{id})" style="height:2px;border-width:0;color:gray;background-color:gray">
                     </div>
+                   
                 </div>
                 <div th:object="${thread}">
-                    <div class="btn-ud" role="group " aria-lsabel="Basic example ">
-                        <div>
-                            <a th:if="(${session.id} == *{user.id} )" th:href="@{/thread/{id}/edit(id=*{ id })}"  class="btn btn-info text-white">
-                                EDIT
-                            </a>
-                            <form th:if="(${session.id} == *{user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=*{ id })}">
-                                <button type="submit" class="btn btn-danger text-white ">DEL</button>
-                            </form>       
-                        </div>
-                        <a th:href="@{/thread/{id}/comment(id=*{ id })}"  class="btn btn-info text-white ">
-                            COMEN
+                    <div class="btn-ud" role="group " aria-lsabel="Basic example " style="text-align: center;">
+                        <a th:href="@{/thread/{id}/comment(id=*{ id })}"  class="btn btn-success text-white ">
+                            COMMENT
                         </a>
                     </div>
                 </div>   
             </div>
-        </div>       
+        </main>     
+        
+        
         
     </body>  
 
