@@ -5,32 +5,55 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link th:href="@{css/main.css}" rel="stylesheet" />
+        <link th:href="@{css/cssprojecct.css}" rel="stylesheet" />
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <title>Sosmed</title>
     </head>
     <body>
 
         <header th:fragment="navbar">
-            <!-- Fixed navbar -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <a class="navbar-brand" href="#" style="justify-content: center"></a>
-                <!-- Navbar brand yo -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTop">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about"></a> </li>
-                    </ul>
-                </div>
-            </nav>
+             <div class="container">
+        <h1 class="logo"></h1>
+  
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Logout</a></li>
+
+          </ul>
+        </nav>
+      </div>
         </header>
 
 
         <footer th:fragment="footer" class="footer ">
-            <div class="container ">
-                <span class="text-muted ">Place sticky footer content here.</span>
-            </div>
+            <div class="container">
+        <div class="row">
+         
+
+          
+
+          <div class="col-xs-6 col-md-3">
+            
+            <ul class="footer-links">
+              <li><a href="https://www.instagram.com/erlangga_ah/">About Us</a></li>
+              <li><a href="https://twitter.com/lolesports">Contact Us</a></li>
+              <li><a href="https://www.youtube.com/">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by US
+            </p>
+          </div>
+
+          
+        </div>
+      </div>
         </footer>
 
 
