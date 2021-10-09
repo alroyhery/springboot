@@ -18,44 +18,28 @@
                     <button type="submit">POST</button>
                 </a>
             </div>
-            
+
             <div th:each="thread : ${list}">
                 <div class="form-thread">
                     <div class="thread">
                         <h2> <span th:text="${ thread.title }"></span> </h2>
-                        <div th:id="'more-'+${ thread.id }" style="display: none;">
-                            <p> <span th:text="${ thread.content }"></span> </p>
-                            <h2> <span  th:text="${ thread.user.name}"></span> </h2>
-                            <p> <span th:text="${ thread.category.name}"></span> </p>
-                            <div th:each="comment : ${comment}">
-                                <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.user.name}"></span></p>
-                                <p> <span th:if="(${comment.thread.id} == ${thread.id})" th:text="${comment.content}"></span></p>
-                            </div>
+                       <div> 
+                        <a th:href="@{/thread/{id}/postdetail(id=${ thread.id })}">
+                            <button type="submit">testttttttttttttt</button>
+                        </a>
+                        </div>
+                            
+                       
+                            
                         </div>
                     </div>
-                    <div th:id="'more2-'+${ thread.id }" style="display:none;"> 
-                        <div class="btn-ud" role="group " aria-lsabel="Basic example ">
-                            <a th:if="(${session.id} == ${thread.user.id} )" th:href="@{/thread/{id}/edit(id=${ thread.id })}"  class="btn btn-info text-white">
-                                EDIT
-                            </a>
-                            <form th:if="(${session.id} == ${thread.user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=${ thread.id })}">
-                                <button type="submit" class="btn btn-danger text-white ">DEL</button>
-                            </form>
-                            <a th:href="@{/thread/{id}/comment(id=${ thread.id })}"  class="btn btn-info text-white ">
-                                COMEN
-                            </a>
-                        </div>
-                    </div>
-                    <div th:id="'more3-'+${ thread.id }" style="display:none;">
-                        <div class="btn-com">
-
-                        </div>
-                    </div>
+                 
+                        
+                   
+                
                 </div>
-                <div>
-                    <button th:data-id="${thread.id}" class="tampil">Check Thread</button>
-                </div>
-            </div>
+ 
+            
         </main>
 
         <div th:replace="includes/base  :: scripts"></div>
@@ -97,16 +81,6 @@
        </script> --> 
  
 <!-- YANG INI BISA BUKA TUTUP TAPI NAMANYA TETEP CHECK THREAD -->  
-         <script>
-            $(document).ready(function(){
-              $(".tampil").click(function(){
-                  var id = $(this).data('id')
-                  console.log(id)
-                $("#more-"+id).toggle();
-                $("#more2-"+id).toggle();
-                $("#more3-"+id).toggle();
-              });
-            });
-         </script> 
+         
     </body>
 </html>

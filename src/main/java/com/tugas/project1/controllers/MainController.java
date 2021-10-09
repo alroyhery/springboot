@@ -23,6 +23,7 @@ import com.tugas.project1.models.User;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -135,4 +136,28 @@ public class MainController {
         commentInterface.send(comment);
         return "redirect:/";
     }
+    
+    @GetMapping("/thread/{id}/postdetail")
+public String postDetails(Model model,  HttpServletRequest request, @PathVariable(value="id")long id) {
+    
+    HttpSession session = request.getSession(true);
+        
+        long user_id = (long) session.getAttribute("id");
+        
+        
+        
+         Thread thread = threadInterface.getById(id);
+        
+        
+        List<Thread> threads = threadInterface.findByUserId(user_id);
+        
+        model.addAttribute("list", threadInterface.getAll());
+        model.addAttribute("comment", commentInterface.getAll());
+
+        model.addAttribute("thread", thread);
+        model.addAttribute("threads", threads);
+
+
+    return "postdetail";
+}
 }
