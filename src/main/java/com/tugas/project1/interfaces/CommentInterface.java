@@ -21,4 +21,6 @@ public interface CommentInterface {
     List<Comment> findByUserId(long user_id);
 
     void send(Comment comment);
+    
+    void delete(long thread_id);
 }

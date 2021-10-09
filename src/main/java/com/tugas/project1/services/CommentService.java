@@ -42,4 +42,9 @@ public class CommentService implements CommentInterface {
     public List<Comment> findByThreadId(long thread_id) {
         return commentRepository.findByThreadId(thread_id);
     }
+    
+    @Override
+    public void delete(long thread_id) {
+        this.commentRepository.deleteById(thread_id);
+    }
 }

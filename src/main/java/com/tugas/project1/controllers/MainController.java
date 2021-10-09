@@ -80,6 +80,7 @@ public class MainController {
         user.setId((long) session.getAttribute("id"));
 
         thread.setUser(user);
+        
 
         threadInterface.store(thread);
         return "redirect:/";
@@ -99,6 +100,7 @@ public class MainController {
     @PostMapping("/thread/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
         threadInterface.delete(id);
+        //commentInterface.delete(id);
         return "redirect:/";
     }
 
@@ -126,7 +128,7 @@ public class MainController {
         comment.setThread(thread);
 
         commentInterface.send(comment);
-        return "redirect:/";
+        return "redirect:/thread/{id}/postdetail";
     }
 
     @GetMapping("/thread/{id}/postdetail")

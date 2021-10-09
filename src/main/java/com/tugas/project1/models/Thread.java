@@ -39,9 +39,9 @@ public class Thread {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    @JoinColumn(name = "thread_id")
-    private List<Comment> comment = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn(name = "thread_id")
+  //  private List<Comment> comment = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -87,11 +87,11 @@ public class Thread {
         return user;
     }
 
-    public void setComment(List<Comment> comment) {
-        this.comment = comment;
-    }
-
-    public List<Comment> getComment() {
-        return comment;
-    }
+//    public void setComment(List<Comment> comment) {
+//        this.comment = comment;
+//    }
+//
+//    public List<Comment> getComment() {
+//        return comment;
+//    }
 }
