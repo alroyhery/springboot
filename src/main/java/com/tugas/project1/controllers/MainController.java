@@ -138,22 +138,19 @@ public class MainController {
     }
     
     @GetMapping("/thread/{id}/postdetail")
-public String postDetails(Model model,  HttpServletRequest request, @PathVariable(value="id")long id) {
+    public String postDetails(Model model,  HttpServletRequest request, @PathVariable(value="id")long id) {
     
     HttpSession session = request.getSession(true);
         
         long user_id = (long) session.getAttribute("id");
-        
-        
-        
-         Thread thread = threadInterface.getById(id);
+
+        Thread thread = threadInterface.getById(id);
         
         
         List<Thread> threads = threadInterface.findByUserId(user_id);
         
         model.addAttribute("list", threadInterface.getAll());
         model.addAttribute("comment", commentInterface.getAll());
-
         model.addAttribute("thread", thread);
         model.addAttribute("threads", threads);
 
