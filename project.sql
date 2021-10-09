@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 06:21 PM
+-- Generation Time: Oct 09, 2021 at 02:06 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -60,10 +60,12 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `content`, `user_id`, `thread_id`, `created_at`) VALUES
-(9, 'oh iya sasuke kehilangan rinnegannya', 2, 11, '2021-10-07 23:13:08'),
-(10, 'test', 2, 11, '2021-10-07 23:13:15'),
-(11, 'yang bener???', 1, 11, '2021-10-07 23:14:39'),
-(12, 'oh ya??', 1, 12, '2021-10-07 23:15:35');
+(39, 'test', 1, 27, '2021-10-09 19:02:17'),
+(40, 'test3', 1, 27, '2021-10-09 19:02:21'),
+(42, 'siapp', 2, 27, '2021-10-09 19:02:54'),
+(43, 'okeee', 2, 27, '2021-10-09 19:04:21'),
+(45, 'pertamax', 2, 28, '2021-10-09 19:05:30'),
+(46, 'test', 2, 28, '2021-10-09 19:05:37');
 
 -- --------------------------------------------------------
 
@@ -100,10 +102,8 @@ CREATE TABLE `thread` (
 --
 
 INSERT INTO `thread` (`id`, `title`, `content`, `user_id`, `category_id`, `created_at`) VALUES
-(11, 'Naruto', 'Kurama baru saja mati gaes!!!!!', 2, 2, '2021-10-07 23:12:53'),
-(12, 'Jualan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 2, 1, '2021-10-07 23:13:55'),
-(13, 'asdasdasd', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 2, 1, '2021-10-07 23:14:05'),
-(14, 'Aku ada spoiler', 'Spoilernya Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor, purus sit amet cursus laoreet, mi quam porta nibh, scelerisque pellentesque enim magna quis dui. Mauris laoreet laoreet augue non vehicula. Aenean aliquam massa a sapien ultrices ornare. Morbi nec nunc placerat, hendrerit sapien sit amet, vulputate mauris. Nam rhoncus cursus nisi a laoreet. Fusce fringilla augue neque, id pretium massa vestibulum ac. Praesent interdum velit eget accumsan sodales. Nunc blandit velit turpis, eget tempus justo consequat eu. Aenean vitae libero nunc. Fusce tristique mauris quis lectus porta, eget tempor dui interdum.', 1, 1, '2021-10-07 23:15:28');
+(27, 'Hello Worldd 2', 'Aku ada cerita yang cukup menyeramkan', 1, 1, '2021-10-09 19:02:07'),
+(28, 'Hello world 3', 'aassaasdasdasdasasasd', 2, 1, '2021-10-09 19:05:22');
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -194,7 +194,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -211,7 +211,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`thread_id`) REFERENCES `thread` (`id`);
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`thread_id`) REFERENCES `thread` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `thread`
