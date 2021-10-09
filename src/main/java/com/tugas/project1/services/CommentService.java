@@ -18,10 +18,11 @@ import org.springframework.stereotype.Service;
  * @author ASUS TUF
  */
 @Service
-public class CommentService implements CommentInterface{
+public class CommentService implements CommentInterface {
+
     @Autowired
     private CommentRepository commentRepository;
-    
+
     @Override
     public List<Comment> getAll() {
         return commentRepository.findAll();
@@ -31,12 +32,12 @@ public class CommentService implements CommentInterface{
     public void send(Comment comment) {
         this.commentRepository.save(comment);
     }
-    
+
     @Override
     public List<Comment> findByUserId(long user_id) {
         return commentRepository.findByUserId(user_id);
     }
-    
+
     @Override
     public List<Comment> findByThreadId(long thread_id) {
         return commentRepository.findByThreadId(thread_id);

@@ -1,6 +1,5 @@
 package com.tugas.project1.controllers;
 
-
 import com.tugas.project1.interfaces.UserInterface;
 import com.tugas.project1.models.User;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 @Controller
 public class LoginController {

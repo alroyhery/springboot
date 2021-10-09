@@ -26,9 +26,9 @@ public class ThreadService implements ThreadInterface {
     @Override
     public List<Thread> getAll() {
         return threadRepository.findAll();
-    }   
-    
-        @Override
+    }
+
+    @Override
     public List<Thread> findByUserId(long user_id) {
         return threadRepository.findByUserId(user_id);
     }
@@ -54,9 +54,5 @@ public class ThreadService implements ThreadInterface {
     public void delete(long id) {
         this.threadRepository.deleteById(id);
     }
-    
-    
-    
-    
-}
 
+}

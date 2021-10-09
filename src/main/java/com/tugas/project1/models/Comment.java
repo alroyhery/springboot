@@ -20,21 +20,22 @@ import javax.persistence.Table;
  * @author ASUS TUF
  */
 @Entity
-@Table(name="comment")
+@Table(name = "comment")
 public class Comment {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(name="content")
+
+    @Column(name = "content")
     private String content;
-    
+
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
-    
+
     @ManyToOne
-    @JoinColumn(name="thread_id")
+    @JoinColumn(name = "thread_id")
     private Thread thread;
 
     public void setUser(User user) {
@@ -53,8 +54,6 @@ public class Comment {
         return thread;
     }
 
-    
-
     public void setContent(String content) {
         this.content = content;
     }
@@ -62,8 +61,7 @@ public class Comment {
     public String getContent() {
         return content;
     }
-    
-    
+
     public void setId(long id) {
         this.id = id;
     }

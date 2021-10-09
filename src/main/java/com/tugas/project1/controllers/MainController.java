@@ -31,46 +31,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MainController {
+
     @Autowired
     private ThreadInterface threadInterface;
 
-
     @Autowired
     private CategoryInterface categoryInterface;
-    
-    
+
     @Autowired
     private CommentInterface commentInterface;
-    
+
     @Autowired
     private UserInterface userInterface;
 
-
     @GetMapping("/")
-    public String index(Model model,  HttpServletRequest request) {
+    public String index(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        
+
         long user_id = (long) session.getAttribute("id");
-        
+
         List<Thread> threads = threadInterface.findByUserId(user_id);
-        
+
         model.addAttribute("list", threadInterface.getAll());
         model.addAttribute("comment", commentInterface.getAll());
 
-        
         model.addAttribute("threads", threads);
-
 
         return "index";
     }
 
     @GetMapping("/thread/create")
     public String create(Model model) {
-        
+
         List<Category> category = categoryInterface.getAll();
         model.addAttribute("category", category);
-        
-        
+
         Thread thread = new Thread();
         model.addAttribute("thread", thread);
 
@@ -80,23 +75,21 @@ public class MainController {
     @PostMapping("/thread/store")
     public String store(@ModelAttribute("thread") Thread thread, HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        
+
         User user = new User();
         user.setId((long) session.getAttribute("id"));
-        
+
         thread.setUser(user);
 
         threadInterface.store(thread);
         return "redirect:/";
     }
-    
-   
-    
+
     @GetMapping("/thread/{id}/edit")
     public String edit(@PathVariable(value = "id") long id, Model model) {
-       List<Category> category = categoryInterface.getAll();
+        List<Category> category = categoryInterface.getAll();
         model.addAttribute("category", category);
-        
+
         Thread thread = threadInterface.getById(id);
 
         model.addAttribute("thread", thread);
@@ -105,10 +98,10 @@ public class MainController {
 
     @PostMapping("/thread/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
-       threadInterface.delete(id);
+        threadInterface.delete(id);
         return "redirect:/";
     }
-    
+
     @GetMapping("/thread/{id}/comment")
     public String comment(@PathVariable(value = "id") long id, Model model) {
         Thread thread = threadInterface.getById(id);
@@ -116,45 +109,42 @@ public class MainController {
 
         Comment comment = new Comment();
         model.addAttribute("comment", comment);
-        
+
         return "comment";
     }
 
     @PostMapping("/thread/{id}/comment/store")
     public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, HttpServletRequest request, long id) {
         HttpSession session = request.getSession(true);
-        
-        
+
         User user = new User();
         user.setId((long) session.getAttribute("id"));
-        
+
         thread = threadInterface.getById(id);
-        
+
         comment.setUser(user);
         comment.setThread(thread);
-        
+
         commentInterface.send(comment);
         return "redirect:/";
     }
-    
+
     @GetMapping("/thread/{id}/postdetail")
-    public String postDetails(Model model,  HttpServletRequest request, @PathVariable(value="id")long id) {
-    
-    HttpSession session = request.getSession(true);
-        
+    public String postDetails(Model model, HttpServletRequest request, @PathVariable(value = "id") long id) {
+
+        HttpSession session = request.getSession(true);
+
         long user_id = (long) session.getAttribute("id");
 
         Thread thread = threadInterface.getById(id);
-        
-        
+
         List<Thread> threads = threadInterface.findByUserId(user_id);
-        
+
         model.addAttribute("list", threadInterface.getAll());
         model.addAttribute("comment", commentInterface.getAll());
         model.addAttribute("thread", thread);
         model.addAttribute("threads", threads);
 
-
-    return "postdetail";
-}
+        return "postdetail";
+    }
 }

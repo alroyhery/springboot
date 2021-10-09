@@ -15,10 +15,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author Hudya
- */
 @Component
 @Order(1)
 public class AuthMiddleware implements Filter {

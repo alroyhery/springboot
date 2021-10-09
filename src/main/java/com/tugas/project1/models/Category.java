@@ -17,19 +17,19 @@ import javax.persistence.Table;
  * @author ASUS TUF
  */
 @Entity
-@Table(name="category")
+@Table(name = "category")
 public class Category {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
-    
+
     public void setName(String name) {
         this.name = name;
     }

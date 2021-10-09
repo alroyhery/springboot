@@ -5,7 +5,6 @@
  */
 package com.tugas.project1.interfaces;
 
-
 import com.tugas.project1.models.Thread;
 import java.util.List;
 
@@ -14,9 +13,14 @@ import java.util.List;
  * @author ASUS TUF
  */
 public interface ThreadInterface {
+
     List<Thread> getAll();
+
     void store(Thread thread);
+
     Thread getById(long id);
+
     void delete(long id);
+
     List<Thread> findByUserId(long user_id);
 }

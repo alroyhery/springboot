@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author ASUS TUF
  */
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long>{
-    
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+
 }

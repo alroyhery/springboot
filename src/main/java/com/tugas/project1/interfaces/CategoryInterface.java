@@ -13,5 +13,6 @@ import java.util.List;
  * @author ASUS TUF
  */
 public interface CategoryInterface {
+
     List<Category> getAll();
 }

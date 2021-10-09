@@ -12,7 +12,7 @@
     <body>
         <main role="main " class="container">
             <h1>Hello, <span th:text="${session.name}"></span>!</h1>
-            
+
             <div> 
                 <a th:href="@{/thread/create}">
                     <button type="submit">POST</button>
@@ -23,64 +23,19 @@
                 <div class="form-thread">
                     <div class="thread">
                         <h2> <span th:text="${ thread.title }"></span> </h2>
-                       <div> 
-                        <a th:href="@{/thread/{id}/postdetail(id=${ thread.id })}">
-                            <button type="submit">Check Thread</button>
-                        </a>
-                        </div>
-                            
-                       
-                            
+                        <div> 
+                            <a th:href="@{/thread/{id}/postdetail(id=${ thread.id })}">
+                                <button type="submit">Check Thread</button>
+                            </a>
                         </div>
                     </div>
-                 
-                        
-                   
-                
                 </div>
- 
-            
+            </div>
+
+
         </main>
 
-        <div th:replace="includes/base  :: scripts"></div>
-        
-<!-- YANG INI CUMAN BUAT BISA DI SALAH SATU THREAD DOANG -->  
-       <!--    <script>
-                function showBtn() {
-                  var more1 = document.getElementById("moreOne");
-                  var more2 = document.getElementById("moreTwo");
-                  var more3 = document.getElementById("moreThree");
-                  var btnText = document.getElementById("myBtn");
-                  
-                  if (more2.style.display === "none") {
-                    more1.style.display = "none"  
-                    more2.style.display = "table-cell";
-                    more3.style.display = "none";
-                    btnText.innerHTML = "Show Thread";
-                  } else{
-                    more1.style.display = "table-cell";
-                    more2.style.display = "none";
-                    more3.style.display = "table-row";
-                    btnText.innerHTML = "Minimize Thread";
-                  }
-                }   
-            </script> -->
- 
- <!-- YANG INI CUMAN BUAT NGASIH DETAIL TAPI GAK BISA DITUTUP LAGI -->      
- <!--     <script>
-            $(function() {
-                 $(".tampil").click(function() {
-                   var id = $(this).data('id')
-                   console.log(id)
-                   $("#more-" + id).css("display", "table-cell");
-                   $("#more2-" + id).css("display", "table-cell");
-                   $("#more3-" + id).css("display", "table-row");
-                 })
-            });
-            
-       </script> --> 
- 
-<!-- YANG INI BISA BUKA TUTUP TAPI NAMANYA TETEP CHECK THREAD -->  
-         
+        <div th:replace="includes/base  :: scripts"></div>      
+
     </body>
 </html>

@@ -26,7 +26,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String store(@ModelAttribute("user") User user, 
+    public String store(@ModelAttribute("user") User user,
             HttpServletRequest request) throws Exception {
 
         userInterface.register(user);

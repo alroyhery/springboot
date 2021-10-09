@@ -21,31 +21,30 @@ import javax.persistence.Table;
  *
  * @author ASUS TUF
  */
-
 @Entity
-@Table(name="thread")
+@Table(name = "thread")
 public class Thread {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(name="title")
+
+    @Column(name = "title")
     private String title;
-    
-    @Column(name="content")
+
+    @Column(name = "content")
     private String content;
-    
+
     @ManyToOne
-    @JoinColumn (name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
-    
+
     @OneToMany
-    @JoinColumn(name="thread_id")
+    @JoinColumn(name = "thread_id")
     private List<Comment> comment = new ArrayList<>();
-    
-    
+
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public void setTitle(String title) {
@@ -63,8 +62,7 @@ public class Thread {
     public String getContent() {
         return content;
     }
-    
-    
+
     public void setId(long id) {
         this.id = id;
     }
@@ -72,7 +70,7 @@ public class Thread {
     public long getId() {
         return id;
     }
-    
+
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -88,7 +86,7 @@ public class Thread {
     public User getUser() {
         return user;
     }
-    
+
     public void setComment(List<Comment> comment) {
         this.comment = comment;
     }
@@ -97,4 +95,3 @@ public class Thread {
         return comment;
     }
 }
-

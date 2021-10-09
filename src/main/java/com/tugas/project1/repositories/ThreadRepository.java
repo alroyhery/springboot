@@ -16,5 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ThreadRepository extends JpaRepository<Thread, Long> {
+
     List<Thread> findByUserId(long user_id);
 }

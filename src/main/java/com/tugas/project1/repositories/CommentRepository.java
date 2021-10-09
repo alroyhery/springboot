@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
  * @author ASUS TUF
  */
 @Repository
-public interface CommentRepository extends JpaRepository<Comment,Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+
     List<Comment> findByUserId(long user_id);
+
     List<Comment> findByThreadId(long user_id);
 }

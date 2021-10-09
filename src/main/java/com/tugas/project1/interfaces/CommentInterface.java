@@ -13,8 +13,12 @@ import java.util.List;
  * @author ASUS TUF
  */
 public interface CommentInterface {
+
     List<Comment> getAll();
+
     List<Comment> findByThreadId(long thread_id);
+
     List<Comment> findByUserId(long user_id);
+
     void send(Comment comment);
 }
