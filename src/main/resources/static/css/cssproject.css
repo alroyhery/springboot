@@ -106,8 +106,10 @@ nav a:hover::before {
     box-shadow: 0 20px 20px -20px #333;
 }
 
-.isi-thread{
-    font-weight: 500;
+.isi-thread {
+    font-weight: 300;
+    font-size: 130%;
+    
 }
 
 .isi-comment{
