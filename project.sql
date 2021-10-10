@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2021 at 02:06 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Oct 10, 2021 at 09:27 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,21 +66,6 @@ INSERT INTO `comment` (`id`, `content`, `user_id`, `thread_id`, `created_at`) VA
 (43, 'okeee', 2, 27, '2021-10-09 19:04:21'),
 (45, 'pertamax', 2, 28, '2021-10-09 19:05:30'),
 (46, 'test', 2, 28, '2021-10-09 19:05:37');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `report`
---
-
-CREATE TABLE `report` (
-  `id_report` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_thread` int(11) DEFAULT NULL,
-  `id_comment` int(11) DEFAULT NULL,
-  `reason` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -146,15 +131,6 @@ ALTER TABLE `comment`
   ADD KEY `thread_id` (`thread_id`);
 
 --
--- Indexes for table `report`
---
-ALTER TABLE `report`
-  ADD PRIMARY KEY (`id_report`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_thread` (`id_thread`),
-  ADD KEY `id_comment` (`id_comment`);
-
---
 -- Indexes for table `thread`
 --
 ALTER TABLE `thread`
@@ -183,12 +159,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-
---
--- AUTO_INCREMENT for table `report`
---
-ALTER TABLE `report`
-  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `thread`
