@@ -34,4 +34,58 @@ public class UserIntegrationWithoutMockingTests {
         
         Assertions.assertEquals(user.getEmail(), checkUser.getEmail());
     }
+    
+   
+    
+    @Test
+    public void createUserTestWithoutPassword() throws Exception {
+       User user = new User();
+       user.setEmail("qwe@gmail.com");
+        user.setName("abc");
+        user.setPassword("123456");
+        
+        service.register(user);
+        User checkUser = service.auth("qwe@gmail.com", "123456");
+        
+        Assertions.assertEquals(user.getEmail(), checkUser.getEmail());
+    }
+    
+    @Test
+    public void createUserTestWithoutEmail() throws Exception {
+       User user = new User();
+       user.setEmail("asd@gmail.com");
+        user.setName("abc");
+        user.setPassword("123456");
+        
+        service.register(user);
+        User checkUser = service.auth("asd@gmail.com", "123456");
+        
+        Assertions.assertEquals(user.getEmail(), checkUser.getEmail());
+    }
+    
+    @Test
+    public void createUserTestWithoutName() throws Exception {
+       User user = new User();
+       user.setEmail("asd@gmail.com");
+        user.setName("abc");
+        user.setPassword("123456");
+        
+        service.register(user);
+        User checkUser = service.auth("asd@gmail.com", "123456");
+        
+        Assertions.assertEquals(user.getEmail(), checkUser.getEmail());
+    }
+    
+     @Test
+    public void createUserTestEmpty() throws Exception {
+       User user = new User();
+       user.setEmail("asd@gmail.com");
+        user.setName("abc");
+        user.setPassword("123456");
+        
+        service.register(user);
+        User checkUser = service.auth("asd@gmail.com", "123456");
+        
+        Assertions.assertEquals(user.getEmail(), checkUser.getEmail());
+    }
 }
