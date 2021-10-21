@@ -153,7 +153,7 @@ public class WebMvcThreadTests {
         mockMvc.perform(post("/thread/store")
         .flashAttr("thread", thread))
         .andExpect(status().is3xxRedirection())
-        .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/store"))
+        .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/store")) //Failures: WebMvcThreadTests.testPostWithoutTitle:156 Redirected URL expected:</thread/store> but was:</login>
         .andExpect(MockMvcResultMatchers
                 .flash().attributeExists("danger")
         )
