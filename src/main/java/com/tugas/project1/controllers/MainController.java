@@ -92,6 +92,11 @@ public class MainController {
             return "redirect:/";
         }
         
+        if (thread.getContent().length() > 10000){
+            ra.addFlashAttribute("danger", "Content should be less than 10.000 characters!");
+            return "redirect:/";
+        }
+        
 
         threadInterface.store(thread);
         return "redirect:/";
