@@ -24,6 +24,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -73,13 +74,23 @@ public class MainController {
     }
 
     @PostMapping("/thread/store")
-    public String store(@ModelAttribute("thread") Thread thread, HttpServletRequest request) {
+    public String store(@ModelAttribute("thread") Thread thread, HttpServletRequest request, RedirectAttributes ra) throws Exception{
         HttpSession session = request.getSession(true);
 
         User user = new User();
         user.setId((long) session.getAttribute("id"));
 
         thread.setUser(user);
+        
+        if (thread.getTitle().equals("")) {
+            ra.addFlashAttribute("danger", "Title of the thread cannot be null!");
+            return "redirect:/";
+        }
+        
+        if (thread.getContent().equals("")) {
+            ra.addFlashAttribute("danger", "Content of the thread cannot be null!");
+            return "redirect:/";
+        }
         
 
         threadInterface.store(thread);
