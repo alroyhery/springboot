@@ -480,4 +480,5 @@ public class WebMvcThreadTests {
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/"))
                 .andDo(print());
     }
+    
 }
