@@ -109,7 +109,8 @@ nav a:hover::before {
 .isi-thread {
     font-weight: 300;
     font-size: 130%;
-    
+    word-wrap: break-word;
+
 }
 
 .isi-comment{
