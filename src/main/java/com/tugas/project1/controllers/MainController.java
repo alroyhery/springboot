@@ -132,7 +132,7 @@ public class MainController {
     }
 
     @PostMapping("/thread/{id}/comment/store")
-    public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, HttpServletRequest request, long id) {
+    public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, HttpServletRequest request,@PathVariable(value = "id") long id) {
         HttpSession session = request.getSession(true);
 
         User user = new User();

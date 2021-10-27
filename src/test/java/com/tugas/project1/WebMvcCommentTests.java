@@ -92,8 +92,12 @@ public class WebMvcCommentTests {
         
         String content = "comment-" + RandomString.make(50).toLowerCase();
         
+        Thread thread = new Thread();
         Comment comment = new Comment();
+        
         comment.setContent(content);
+        comment.setUser(user);
+        thread.setId(27);
         
         
         mockMvc.perform(post("/thread/27/comment/store")
