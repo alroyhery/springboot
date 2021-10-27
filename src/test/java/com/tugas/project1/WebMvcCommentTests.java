@@ -107,4 +107,275 @@ public class WebMvcCommentTests {
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/27/postdetail"))
                 .andDo(print());
     }
+    
+    @Test
+    public void testPostCommentEmpty() throws Exception {
+        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+        String password = RandomString.make(10).toLowerCase();
+        String random = RandomString.make(2).toLowerCase();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Test-"+random);
+        user.setPassword(password);
+
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+
+        mockMvc.perform(get("/")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+         mockMvc.perform(get("/thread/27/postdetail")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("AUTHOR")));
+      
+        
+        mockMvc.perform(get("/thread/27/comment")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Comment")));
+        
+        
+        String content = "";
+        
+        Thread thread = new Thread();
+        Comment comment = new Comment();
+        
+        comment.setContent(content);
+        comment.setUser(user);
+        thread.setId(27);
+        
+        
+          mockMvc.perform(post("/thread/27/comment/store")
+                .sessionAttrs(sessionattr)
+                .flashAttr("comment", comment))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/27/postdetail"))
+                .andDo(print());
+    }
+               
+    
+        @Test
+    public void testPostCommentMoreThanOneThousands() throws Exception {
+        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+        String password = RandomString.make(10).toLowerCase();
+        String random = RandomString.make(2).toLowerCase();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Test-"+random);
+        user.setPassword(password);
+
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+
+        mockMvc.perform(get("/")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+         mockMvc.perform(get("/thread/27/postdetail")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("AUTHOR")));
+      
+        
+        mockMvc.perform(get("/thread/27/comment")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Comment")));
+        
+        
+        String content = "" + RandomString.make(1000).toLowerCase();
+        
+        Thread thread = new Thread();
+        Comment comment = new Comment();
+        
+        comment.setContent(content);
+        comment.setUser(user);
+        thread.setId(27);
+        
+        
+        mockMvc.perform(post("/thread/27/comment/store")
+                .sessionAttrs(sessionattr)
+                .flashAttr("comment", comment))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/27/postdetail"))
+                .andDo(print());
+    }
+    
+    
+    
+     @Test
+    public void testPostCommentOnlyNumbers() throws Exception {
+        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+        String password = RandomString.make(10).toLowerCase();
+        String random = RandomString.make(2).toLowerCase();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Test-"+random);
+        user.setPassword(password);
+
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+
+        mockMvc.perform(get("/")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+         mockMvc.perform(get("/thread/27/postdetail")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("AUTHOR")));
+      
+        
+        mockMvc.perform(get("/thread/27/comment")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Comment")));
+        
+        
+        String content = "" + Math.random() * 3;
+        
+        Thread thread = new Thread();
+        Comment comment = new Comment();
+        
+        comment.setContent(content);
+        comment.setUser(user);
+        thread.setId(27);
+        
+        
+        mockMvc.perform(post("/thread/27/comment/store")
+                .sessionAttrs(sessionattr)
+                .flashAttr("comment", comment))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/27/postdetail"))
+                .andDo(print());
+    }
+    
+    @Test
+    public void testPostCommentWithUpperCase() throws Exception {
+        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+        String password = RandomString.make(10).toLowerCase();
+        String random = RandomString.make(2).toLowerCase();
+
+        User user = new User();
+        user.setEmail(email);
+        user.setName("Test-"+random);
+        user.setPassword(password);
+
+        mockMvc.perform(post("/register")
+                .flashAttr("user", user))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/login"));
+
+
+        User userLogin = new User();
+        userLogin.setEmail(email);
+        userLogin.setPassword(password);
+
+        mockMvc.perform(post("/login")
+                .flashAttr("user", userLogin))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
+
+        HashMap<String, Object> sessionattr = new HashMap<String, Object>();
+
+        sessionattr.put("id", user.getId());
+        sessionattr.put("email", user.getEmail());
+        sessionattr.put("name", user.getName());
+        sessionattr.put("loggedIn", true);
+
+        mockMvc.perform(get("/")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk());
+        
+         mockMvc.perform(get("/thread/27/postdetail")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("AUTHOR")));
+      
+        
+        mockMvc.perform(get("/thread/27/comment")
+                .sessionAttrs(sessionattr))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Comment")));
+        
+        
+        String content = "Upper" + RandomString.make(50).toUpperCase();
+        
+        Thread thread = new Thread();
+        Comment comment = new Comment();
+        
+        comment.setContent(content);
+        comment.setUser(user);
+        thread.setId(27);
+        
+        
+        mockMvc.perform(post("/thread/27/comment/store")
+                .sessionAttrs(sessionattr)
+                .flashAttr("comment", comment))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/thread/27/postdetail"))
+                .andDo(print());
+    }
 }

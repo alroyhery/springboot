@@ -132,7 +132,7 @@ public class MainController {
     }
 
     @PostMapping("/thread/{id}/comment/store")
-    public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, HttpServletRequest request,@PathVariable(value = "id") long id) {
+    public String send(@ModelAttribute("comment") Comment comment, @ModelAttribute("thread") Thread thread, RedirectAttributes ra, HttpServletRequest request,@PathVariable(value = "id") long id) {
         HttpSession session = request.getSession(true);
 
         User user = new User();
@@ -142,6 +142,17 @@ public class MainController {
 
         comment.setUser(user);
         comment.setThread(thread);
+        
+         if (comment.getContent().equals("")) {
+            ra.addFlashAttribute("danger", "You should fill the comment!");
+            return "redirect:/thread/{id}/postdetail";
+        }
+         if (comment.getContent().length() >= 1000){
+            ra.addFlashAttribute("danger", "Comment should be less than 1.000 characters!");
+            return "redirect:/thread/{id}/postdetail";
+        }
+        
+        
 
         commentInterface.send(comment);
         return "redirect:/thread/{id}/postdetail";
@@ -162,6 +173,8 @@ public class MainController {
         model.addAttribute("comment", commentInterface.getAll());
         model.addAttribute("thread", thread);
         model.addAttribute("threads", threads);
+        
+        
 
         return "postdetail";
     }
