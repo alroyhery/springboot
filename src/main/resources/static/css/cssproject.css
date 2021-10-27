@@ -115,4 +115,5 @@ nav a:hover::before {
 
 .isi-comment{
     font-weight: 350;
+    word-wrap: break-word;
 }
