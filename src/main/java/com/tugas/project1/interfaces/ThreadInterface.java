@@ -16,7 +16,7 @@ public interface ThreadInterface {
 
     List<Thread> getAll();
 
-    void store(Thread thread);
+    void store(Thread thread) throws Exception;
 
     Thread getById(long id);
 

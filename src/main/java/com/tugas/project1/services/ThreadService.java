@@ -7,6 +7,7 @@ package com.tugas.project1.services;
 
 import com.tugas.project1.interfaces.ThreadInterface;
 import com.tugas.project1.models.Thread;
+import com.tugas.project1.models.User;
 import com.tugas.project1.repositories.ThreadRepository;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +35,20 @@ public class ThreadService implements ThreadInterface {
     }
 
     @Override
-    public void store(Thread thread) {
+    public void store(Thread thread) throws Exception {
+
+        if (thread.getTitle().equals("")) {
+            throw new IllegalAccessException("Title of the thread cannot be null!");
+        }
+
+        if (thread.getContent().equals("")) {
+            throw new IllegalAccessException("Title of the thread cannot be null!");
+        }
+
+        if (thread.getContent().length() > 10000) {
+            throw new IllegalAccessException("Content should be less than 10.000 characters!");
+        }
+
         this.threadRepository.save(thread);
     }
 
