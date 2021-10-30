@@ -18,6 +18,30 @@ public class UserService implements UserInterface {
     public void register(User user) throws Exception {
         String hashed = this.hash(user.getPassword());
         user.setPassword(hashed);
+        
+        if(user.getEmail().equals("")){
+            throw new IllegalArgumentException("Email cannot be null!"); 
+        }
+        
+        if(user.getName().equals("")){
+            throw new IllegalArgumentException("Name cannot be null!"); 
+        }
+        
+        if(user.getPassword().equals("")){
+            throw new Exception("Password cannot be null!"); 
+        }
+        
+        if(user.getName().contentEquals("~!@#$%^&*()_+-=<>,.?/")){
+            throw new IllegalArgumentException("Symbols on username is not allowed!");
+        }
+        
+        if(user.getEmail().contentEquals("~!#$%^&*()<>?,/")){
+            throw new IllegalArgumentException("Symbols other than . and @ are not allowed!");
+        }
+        
+        if(user.getName().equals("1234567890")){
+            throw new IllegalArgumentException("Username without alphabets is not allowed!");
+        }
 
         this.userRepository.save(user);
     }
