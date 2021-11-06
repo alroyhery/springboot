@@ -10,6 +10,9 @@
             <div class="form-thread">
                 <div class="thread" th:object="${thread}">
                     <br>
+                    <p class="post-date" style="float: right;"><span th:text="*{date}" ></span></p>
+                    <br>
+                    <br>
                     <h3> <span class="badge badge-warning">AUTHOR</span> <span  th:text="*{user.name}"></span> 
                         <span style="float: right; ">
                             <a th:if="(${session.id} == *{user.id} )" th:href="@{/thread/{id}/edit(id=*{ id })}"  class="btn btn-warning text-white">

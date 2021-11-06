@@ -178,4 +178,7 @@ public class MainController {
 
         return "postdetail";
     }
+    
+    
+
 }

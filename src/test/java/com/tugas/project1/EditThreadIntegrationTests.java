@@ -29,7 +29,7 @@ public class EditThreadIntegrationTests {
     @Autowired
     ThreadService service;
 
-    @Mock //MockBean
+    @MockBean //MockBean
     ThreadRepository repository;
 
     @Mock
