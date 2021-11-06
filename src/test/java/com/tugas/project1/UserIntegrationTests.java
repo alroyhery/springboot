@@ -28,7 +28,7 @@ public class UserIntegrationTests {
     @Autowired
     UserService service;
 
-    @Mock //MockBean
+    @MockBean //MockBean
     UserRepository repository;
 
     @Test

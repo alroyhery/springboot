@@ -166,6 +166,7 @@ public class MainController {
         long user_id = (long) session.getAttribute("id");
 
         Thread thread = threadInterface.getById(id);
+        
 
         List<Thread> threads = threadInterface.findByUserId(user_id);
 
@@ -178,4 +179,16 @@ public class MainController {
 
         return "postdetail";
     }
+    
+    @GetMapping("/thread/{id}/comment-{comId}/edit")
+    public String updateComment(@PathVariable(value = "id") long id, @PathVariable(value = "comId") long comId, Model model) {
+        Thread thread = threadInterface.getById(id);
+        Comment com = commentInterface.getById(comId);
+        
+        model.addAttribute("thread", thread);
+        model.addAttribute("comment", com);
+
+        return "comment";
+    }
+
 }

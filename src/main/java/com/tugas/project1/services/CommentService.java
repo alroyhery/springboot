@@ -9,6 +9,7 @@ import com.tugas.project1.interfaces.CommentInterface;
 import com.tugas.project1.models.Comment;
 import com.tugas.project1.repositories.CommentRepository;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,17 @@ public class CommentService implements CommentInterface {
     @Override
     public void delete(long thread_id) {
         this.commentRepository.deleteById(thread_id);
+    }
+    
+    @Override
+    public Comment getById(long id){
+        Optional< Comment> optional = commentRepository.findById(id);
+
+        if (!optional.isPresent()) {
+            throw new RuntimeException(" Todo not found for id :: " + id);
+        }
+
+        Comment comment = optional.get();
+        return comment;
     }
 }

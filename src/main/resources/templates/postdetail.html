@@ -10,6 +10,9 @@
             <div class="form-thread">
                 <div class="thread" th:object="${thread}">
                     <br>
+                    <p class="post-date" style="float: right;"><span th:text="*{date}" ></span></p>
+                    <br>
+                    <br>
                     <h3> <span class="badge badge-warning">AUTHOR</span> <span  th:text="*{user.name}"></span> 
                         <span style="float: right; ">
                             <a th:if="(${session.id} == *{user.id} )" th:href="@{/thread/{id}/edit(id=*{ id })}"  class="btn btn-warning text-white">
@@ -30,6 +33,13 @@
                     <p style="text-align: right;"> <span class="badge badge-info badge-sm" th:text="*{category.name}"></span> </p>
                     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                     <div th:each="comment : ${comment}">
+                        
+                        <div th:if="${comment.thread.id} == *{id}">
+                             <a th:if="(${session.id} == ${comment.user.id} )" th:href="@{/thread/{id}/comment-{comId}/editcomment ( id=${ comment.thread.id }, comId=*{id}) }"  class="btn btn-warning text-white">
+                                <i  class='bx bx-pencil'></i>
+                            </a>
+                        </div>
+
                         <p> <span th:if="(${comment.thread.id} == *{id})" th:text="${comment.user.name}"></span></p>
                         <p class="isi-comment"> <span th:if="(${comment.thread.id} == *{id})"th:text="${comment.content}"></span></p>
                         <hr th:if="(${comment.thread.id} == *{id})" style="height:2px;border-width:0;color:gray;background-color:gray">

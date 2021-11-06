@@ -34,7 +34,10 @@ public class Thread {
 
     @Column(name = "content")
     private String content;
-
+    
+    @Column(name = "created_at")
+    private String date;
+            
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -47,6 +50,14 @@ public class Thread {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
     public void setTitle(String title) {
         this.title = title;
     }
