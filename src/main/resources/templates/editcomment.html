@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="includes/base :: css"></head>
+    <body>
+        <header th:replace="includes/base :: navbar"></header>
+
+        <main role="main " class="container">
+            <div class="container mt-5">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <form method="POST" action="#" th:each="thread : ${thread}" th:action="@{/thread/{id}/comment/store(id=${ thread.id })}">
+                            <input type="hidden" th:field="${thread.id}"/>
+                            <div class="form-group" th:object="${comment}">
+                                <input type="hidden" th:field="*{id}"/>
+                                <h2>Edit Comment</h2>
+                                <input th:field="*{content}" type="text" class="form-control" id="example-inventory-name" aria-describedby="emailHelp" placeholder="Ganti pendapatmu disini" required>
+                                <small id="emailHelp" class="form-text text-muted">Tuliskan apa yang membuatmu berubah pikiran mengenai pendapat ini.</small>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div th:replace="includes/base  :: footer"></div>
+    </body>
+</html>    
