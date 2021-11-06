@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="includes/base :: css"></head>
+    <head th:replace="includes/base :: css">
+    </head>
     <body>
         <header th:replace="includes/base :: navbar"></header>
 
@@ -31,7 +32,7 @@
                                    </select>
                             </div>
                             
-                            
+                            <input id="date" name="date" type="hidden" th:field="*{date}">
                             <div style="text-align: center;">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

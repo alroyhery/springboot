@@ -17,7 +17,7 @@
                         <span style="float: right; ">
                             <a th:if="(${session.id} == *{user.id} )" th:href="@{/thread/{id}/edit(id=*{ id })}"  class="btn btn-warning text-white">
                                 <i class='bx bx-pencil'></i>
-                            </a>
+                            </a> 
                             
                             <a>
                                 <form th:if="(${session.id} == *{user.id} )" onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/thread/{id}/delete(id=*{ id })}">
@@ -34,11 +34,11 @@
                     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                     <div th:each="comment : ${comment}">
                         
-                        <div th:if="${comment.thread.id} == *{id}">
+                       <!-- DIPENDING <div th:if="${comment.thread.id} == *{id}">
                              <a th:if="(${session.id} == ${comment.user.id} )" th:href="@{/thread/{id}/comment-{comId}/editcomment ( id=${ comment.thread.id }, comId=*{id}) }"  class="btn btn-warning text-white">
                                 <i  class='bx bx-pencil'></i>
                             </a>
-                        </div>
+                        </div> -->
 
                         <p> <span th:if="(${comment.thread.id} == *{id})" th:text="${comment.user.name}"></span></p>
                         <p class="isi-comment"> <span th:if="(${comment.thread.id} == *{id})"th:text="${comment.content}"></span></p>
