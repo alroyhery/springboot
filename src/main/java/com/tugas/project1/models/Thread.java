@@ -34,9 +34,6 @@ public class Thread {
 
     @Column(name = "content")
     private String content;
-    
-    @Column(name = "created_at")
-    private String date;
             
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -49,6 +46,9 @@ public class Thread {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    
+    @Column(name = "created_at")
+    private String date;
 
     public String getDate() {
         return date;
