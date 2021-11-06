@@ -20,6 +20,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -35,6 +38,7 @@ public class WebMvcThreadTests {
     
     @Test
     public void testPostThread() throws Exception {
+
 
         String email = RandomString.make(10).toLowerCase() + "@mail.com";
         String password = RandomString.make(10).toLowerCase();
@@ -78,6 +82,7 @@ public class WebMvcThreadTests {
         
         String title = "title-" + RandomString.make(10).toLowerCase();
         String content = "cont-" + RandomString.make(50).toLowerCase();
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -87,6 +92,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -143,6 +149,7 @@ public class WebMvcThreadTests {
         
         String title = "";
         String content = "cont-" + RandomString.make(50).toLowerCase();
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -152,6 +159,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -208,6 +216,7 @@ public class WebMvcThreadTests {
         
         String title = "Without Content-" + RandomString.make(10).toLowerCase();
         String content = "";
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -217,6 +226,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -272,6 +282,7 @@ public class WebMvcThreadTests {
         
         String title = "10kChars-" + RandomString.make(2).toLowerCase();
         String content = "" + RandomString.make(10000).toLowerCase();
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -281,6 +292,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -336,6 +348,7 @@ public class WebMvcThreadTests {
         
         String title = "11kChars-" + RandomString.make(2).toLowerCase();
         String content = "" + RandomString.make(11000).toLowerCase();
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -345,6 +358,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -400,6 +414,7 @@ public class WebMvcThreadTests {
         
         String title = "Symb0ls-" + RandomString.make(2).toLowerCase() + "~!`@#$%^&*()";
         String content = "cont" + RandomString.make(50).toLowerCase();
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -409,6 +424,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)
@@ -463,6 +479,7 @@ public class WebMvcThreadTests {
         
         String title = "Numeric-" + RandomString.make(2).toLowerCase();
         String content = "" + Math.random() * 5;
+        String date = new Timestamp(System.currentTimeMillis()).toString();
         
         Category cat =  new Category();
         cat.setId(1);
@@ -472,6 +489,7 @@ public class WebMvcThreadTests {
         thread.setCategory(cat);
         thread.setContent(content);
         thread.setUser(user);
+        thread.setDate(date);
         
         mockMvc.perform(post("/thread/store")
                 .sessionAttrs(sessionattr)

@@ -10,6 +10,7 @@ import com.tugas.project1.models.User;
 import com.tugas.project1.models.Thread;
 import com.tugas.project1.repositories.ThreadRepository;
 import com.tugas.project1.services.ThreadService;
+import java.sql.Timestamp;
 import java.util.List;
 import net.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.Assertions;
@@ -53,6 +54,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("Testing Hello world 3");
             thread.setContent("ASKDJASKDJASKJDJSAKDKAJSDKJASD");
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread)).thenReturn(thread);
             service.store(thread);
@@ -80,6 +82,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("");
             thread.setContent("ASKDJASKDJASKJDJSAKDKAJSDKJASD");
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread))
                     .thenThrow(new IllegalArgumentException("Title of the thread cannot be null!"));
@@ -108,6 +111,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("Testing Hello world 3");
             thread.setContent("");
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread))
                     .thenThrow(new IllegalArgumentException("Content of the thread cannot be null!"));
@@ -136,6 +140,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("Testing Hello world 3");
             thread.setContent("" + content);
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread)).thenReturn(thread);
             service.store(thread);
@@ -164,6 +169,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("");
             thread.setContent("" + content);
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread))
                     .thenThrow(new IllegalArgumentException("Content of the thread should less than 10k characters!"));
@@ -193,6 +199,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("" + title);
             thread.setContent("ASKDJASKDJASKJDJSAKDKAJSDKJASD");
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread)).thenReturn(thread);
             service.store(thread);
@@ -221,6 +228,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("Testing Hello world 3");
             thread.setContent(content);
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread)).thenReturn(thread);
             service.store(thread);
@@ -251,6 +259,7 @@ public class EditThreadIntegrationTests {
             thread.setTitle("Qwerty's Hello world 3");
             thread.setContent("ASJDHASDHADHADADADAJDAJSDAJDJASDJ");
             thread.setCategory(cat);
+            thread.setDate("2021-11-06 16:11:16");
 
             when(repository.save(thread))
                     .thenThrow(new Exception("User is not the author of the thread!"));
