@@ -1,5 +1,5 @@
 # Project: Sosmed Curhat
-This project is to fullfil the assignment given by our college.
+This project is to fulfill the assignment given by our college.
 
 # About
 Sosmed Curhat is a web application based on Spring Boot, Java, HTML, CSS, JavaScript, JUnit, Thymeleaf, MySQL, Maven, JMeter, Hibernate, and Mockito. Sosmed Curhat is heavily inspired by Kaskus, Twitter, and many other social media therefore, it lets you to post a thread depending on the categories, and comment on an available thread!
